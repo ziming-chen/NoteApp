@@ -7,7 +7,7 @@
 | 陈子明 | Chen Ziming |
 | 高海天 | Gao Haitian |
 | 吴彦澜 | Wu Yanlan |
-| 柳云飞 | Liu Yunfei |
+| 叶与陈 | Ye Yuchen |
 
 给老师阅读的说明是 [README.md](README.md)。原小组 PDF、Excel 保持原样，本说明用于理解和准备展示。
 

@@ -11,7 +11,7 @@ Names are written in Chinese order: **family name first, given name second**. Th
 | 陈子明 | Chen Ziming |
 | 高海天 | Gao Haitian |
 | 吴彦澜 | Wu Yanlan |
-| 柳云飞 | Liu Yunfei |
+| 叶与陈 | Ye Yuchen |
 
 ## Submission files
 
