@@ -1,5 +1,9 @@
 # NotesApp — Security Coursework
 
+**Full name:** 陈子明 Chen Ziming
+
+**CHU Student ID:** 2023905333
+
 | Coursework | Implementation and evidence |
 | --- | --- |
 | Project 1: threat model | [Group report, data-flow diagram and STRIDE analysis](project1/README.md) |
@@ -20,7 +24,7 @@ Verified 22 October 2026: 75 application tests and 52 standalone lab tests passe
 
 The following report records the Session 02 application before comment encryption. Its observations and unsigned CSV samples are historical. The original source and report are preserved in the local course archive at `Assignments/Session02/pre-homework`.
 
-Ziming Chen · Student ID 2023905333 · Individual submission · 8 October 2026
+陈子明 Chen Ziming · CHU Student ID 2023905333 · Individual submission · 8 October 2026
 
 ## Environment
 

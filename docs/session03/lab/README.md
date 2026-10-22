@@ -1,5 +1,9 @@
 # Session 03: Symmetric Encryption Lab
 
+**Full name:** 陈子明 Chen Ziming
+
+**CHU Student ID:** 2023905333
+
 This lab implements the two classroom tasks on slide 30: recover a Caesar-encrypted message by frequency analysis, then compare AES-ECB and AES-GCM on an image. Both experiments use self-authored inputs because the slides do not supply a ciphertext or an image file. The NotesApp comment-column homework and Project 1 are separate tasks.
 
 ## Run

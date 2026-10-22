@@ -1,5 +1,9 @@
 # Session 04: HMAC Protection for Grades Exports
 
+**Full name:** 陈子明 Chen Ziming
+
+**CHU Student ID:** 2023905333
+
 Verified 21 October 2026.
 
 Grades downloaded from NotesApp now carry an HMAC-SHA-256 authentication code. A teacher can upload an export to verify whether its bytes have changed. Changing a grade while keeping the original code causes verification to fail. Verification does not import grades or modify the database.

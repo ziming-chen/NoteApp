@@ -1,6 +1,10 @@
 # Session 03 Homework: Encrypting NotesApp Comments
 
-Ziming Chen · Student ID 2023905333 · Verified 8 October 2026
+**Full name:** 陈子明 Chen Ziming
+
+**CHU Student ID:** 2023905333
+
+Verified 8 October 2026.
 
 Slide 30 asks for AES-GCM encryption of the NotesApp `comment` column. Comments are now encrypted before INSERT or UPDATE and authenticated and decrypted for display. The column remains `TEXT`; grades and other application data retain their existing values.
 

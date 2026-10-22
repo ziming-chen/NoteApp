@@ -2,6 +2,10 @@
 
 This is the shared group submission for Project 1 of the Computer Security course. This copy is maintained and submitted by **Chen Ziming (陈子明)**. The analysis and supporting files are group work.
 
+**Submitting student's full name:** 陈子明 Chen Ziming
+
+**CHU Student ID:** 2023905333
+
 ## Group members
 
 Names are written in Chinese order: **family name first, given name second**. The Latin names below are Hanyu Pinyin without tone marks.
