@@ -1,0 +1,25 @@
+{
+  "measured_at_utc": "2026-10-22T09:50:46.745699+00:00",
+  "dataset": "Six simulated course accounts; no connection to NotesApp or other targets",
+  "algorithm": "MD5 without salt",
+  "wordlist_candidates": 170,
+  "wordlist_sha256": "3614d52dbb45e8b0080821bdf1a0c0ad2cbac2cc85551239f4f2bc2a9ebc5e3f",
+  "dump_sha256": "a47c5eb261f22a33b64d98cad1a1bc5cadb16d9097b3f177dfdf962ff0e5f7ee",
+  "total_accounts": 6,
+  "cracked_accounts": 4,
+  "cracked": {
+    "liwei": "123456",
+    "aisha": "password1",
+    "tomk": "qwerty123",
+    "sofia": "iloveyou"
+  },
+  "held_out": [
+    "marie",
+    "raj"
+  ],
+  "elapsed_ns": 160700,
+  "elapsed_ms": 0.1607,
+  "timer": "time.perf_counter_ns; matching loop only",
+  "python_version": "3.13.12",
+  "platform": "Windows-11-10.0.26200-SP0"
+}

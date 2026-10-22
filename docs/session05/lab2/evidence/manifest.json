@@ -1,0 +1,28 @@
+{
+  "images": [
+    {
+      "path": "evidence/01_md5_dictionary_attack.jpg",
+      "bytes": 121626,
+      "sha256": "c35ee3b41721c7970069b83d2953eabd59c266eeeaf3f07e479b148212fd9627",
+      "provenance": "Original user-supplied Windows Terminal screenshot"
+    },
+    {
+      "path": "evidence/02_alice_first_login.png",
+      "bytes": 28589,
+      "sha256": "b393237cad395794fd0264a269a479f33ff4bf24896f76a85a06a9fab87a7e05",
+      "provenance": "Automated Edge screenshot from verify_live.py; real local app; no synthetic terminal image"
+    },
+    {
+      "path": "evidence/03_wrong_password_denied.png",
+      "bytes": 14336,
+      "sha256": "d273167db0541f4c8ff6154bb744fa872683cedba213ae7e50926e09b391693b",
+      "provenance": "Automated Edge screenshot from verify_live.py; real local app; no synthetic terminal image"
+    },
+    {
+      "path": "evidence/04_alice_second_login.png",
+      "bytes": 28589,
+      "sha256": "b393237cad395794fd0264a269a479f33ff4bf24896f76a85a06a9fab87a7e05",
+      "provenance": "Automated Edge screenshot from verify_live.py; real local app; no synthetic terminal image"
+    }
+  ]
+}

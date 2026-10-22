@@ -31,6 +31,7 @@ from flask import (
 from comment_crypto import CommentCipher, CommentCryptoError
 from comment_migration import migrate_comments
 from export_hmac import ExportAuthenticator, ExportIntegrityError
+from password_storage import check_password
 
 # --- Configuration ------------------------------------------------------------
 # All configuration comes from the environment (set in docker-compose.yml).
@@ -187,22 +188,35 @@ def login():
     if request.method == "POST":
         username = request.form.get("username", "")
         password = request.form.get("password", "")
-        # Flaw #8: SQL injection. Query built by string concatenation, no params.
+        # Flaw #8 remains for the later SQL-injection class: username is concatenated.
+        # Password verification is handled separately so legacy values can migrate.
         query = (
-            "SELECT id, username, role FROM users "
-            "WHERE username = '" + username + "' AND password = '" + password + "'"
+            "SELECT id, username, role, password FROM users "
+            "WHERE username = '" + username + "'"
         )
         conn = get_db()
-        cur = conn.cursor()
+        authenticated = False
         try:
-            cur.execute(query)
-            row = cur.fetchone()
-        except Exception as e:
-            # Keep the raw error visible - helps the SQLi session.
-            error = f"Query error: {e}"
-            row = None
-        conn.close()
-        if row:
+            cur = conn.cursor()
+            try:
+                cur.execute(query)
+                row = cur.fetchone()
+            except Exception as e:
+                # Keep the raw error visible - helps the SQLi session.
+                error = f"Query error: {e}"
+                row = None
+            if row:
+                authenticated, replacement = check_password(row["password"], password)
+                if authenticated and replacement is not None:
+                    cur.execute(
+                        "UPDATE users SET password = %s WHERE id = %s",
+                        (replacement, row["id"]),
+                    )
+                    conn.commit()
+                    log(f"upgraded {row['username']} to argon2")
+        finally:
+            conn.close()
+        if authenticated:
             session["user_id"] = row["id"]
             session["username"] = row["username"]
             session["role"] = row["role"]

@@ -1,0 +1,17 @@
+{
+  "retrieved_at_utc": "2026-10-22T09:46:22.094084+00:00",
+  "files": [
+    {
+      "file": "sources/password-audit_source.html",
+      "url": "https://kristenpire.github.io/epita-security-labs/class5/password-audit/",
+      "sha256": "a00f9ca6e98f6930d236cb4c05b7fd1697a2369189a3169f0f50f5a4fe965c71",
+      "bytes": 57665
+    },
+    {
+      "file": "crack/wordlist.txt",
+      "url": "https://kristenpire.github.io/epita-security-labs/class5/assets/common-passwords.txt",
+      "sha256": "3614d52dbb45e8b0080821bdf1a0c0ad2cbac2cc85551239f4f2bc2a9ebc5e3f",
+      "bytes": 1360
+    }
+  ]
+}

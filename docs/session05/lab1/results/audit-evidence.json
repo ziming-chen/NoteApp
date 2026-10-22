@@ -1,0 +1,75 @@
+{
+  "date": "2026-10-22",
+  "pair": [
+    "Chen Ziming",
+    "Wu Yanlan"
+  ],
+  "student_full_name": "\u9648\u5b50\u660e Chen Ziming",
+  "chu_student_id": "2023905333",
+  "partner_full_name": "\u5434\u5f66\u6f9c Wu Yanlan",
+  "partner_chu_student_id": "2023905420",
+  "scope": "Own NotesApp and loopback traffic; course test credentials only",
+  "http": {
+    "capture_file": "login-http.pcapng",
+    "capture_bytes": 52640,
+    "capture_sha256": "11da57b463ddd4c661f969ea29fd0fe52004a4bae102e2f326cdee3f0b6e94f0",
+    "capture_packets": 409,
+    "post_frame": 348,
+    "tcp_stream": 9,
+    "observed_body": "username=alice&password=alicepw",
+    "response_frame": 350,
+    "login_response_code": 302
+  },
+  "https": {
+    "capture_file": "login-https.pcapng",
+    "capture_sha256": "62060bfb4ec2e0b2f8a2c2a3e6ea35eb546d28d9285d5cf7e721e346b782a12e",
+    "capture_bytes": 32756,
+    "packet_count": 75,
+    "examined_screenshot_stream": 6,
+    "tls13_server_hellos": [
+      "27\t4\t0x0304",
+      "28\t3\t0x0304",
+      "50\t6\t0x0304"
+    ],
+    "plaintext_found_in_reassembled_tcp_payloads": {
+      "username=alice&password=alicepw": false,
+      "username=alice": false,
+      "password=alicepw": false,
+      "alicepw": false
+    },
+    "http_request_frames": [],
+    "session_keys_supplied_for_analysis": false,
+    "http80_root_redirect": {
+      "url": "http://localhost/",
+      "status": 301,
+      "location": "https://localhost/",
+      "checked_at_utc": "2026-10-22T09:17:55.619504+00:00"
+    },
+    "http8080_closed": true,
+    "database_unchanged_since_precheck": true
+  },
+  "certificates": {
+    "github": {
+      "subject_cn": "github.com",
+      "issuer_cn": "Sectigo Public Server Authentication CA DV E36",
+      "chain_root_to_leaf": [
+        "Sectigo Public Server Authentication Root E46",
+        "Sectigo Public Server Authentication CA DV E36",
+        "github.com"
+      ],
+      "certificate_sha256": "46b601ee08b418cf8a3a1ebfe670ba5ce43bb05a917fa8b2dd087a30471cfc63"
+    },
+    "localhost": {
+      "subject_cn": "localhost",
+      "issuer_cn": "localhost",
+      "chain_root_to_leaf": [
+        "localhost"
+      ],
+      "certificate_sha256": "6e3209c409bef50b7bb6eb5818094ad8903d8e4d75943ebf901f143cbbf72cf9"
+    }
+  },
+  "browser_warning": "NET::ERR_CERT_AUTHORITY_INVALID",
+  "optional_wrong_domain_test_performed": false,
+  "cleanup_to_http_performed": false,
+  "final_state": "HTTPS enabled with the self-signed lab certificate"
+}

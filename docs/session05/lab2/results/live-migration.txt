@@ -1,0 +1,17 @@
+started_at_utc: 2026-10-22T12:13:41.270441+00:00
+origin: https://localhost
+operator: Assistant automated Edge session, authorized by user
+certificate_handling: ignore_https_errors for the local self-signed lab certificate only
+alice_was_plaintext: True
+legacy_wrong_password_denied: True
+legacy_wrong_password_did_not_migrate: True
+first_login_dashboard: https://localhost/dashboard
+alice_stored_hash: $argon2id$v=19$m=65536,t=3,p=4$cC+JIvFxMY8j/9H9Y5SgLg$76fVFVvVWCXPQ/k79+XROqKbrHPI5s1Yk/yvocDByDE
+first_hash_sha256: a816d036a3da2cb43ff556db3ac8fc18d345c138707eccbee1e23ede140b44ee
+only_alice_password_changed: True
+argon2_wrong_password_denied: True
+argon2_wrong_password_preserved_hash: True
+second_login_dashboard: https://localhost/dashboard
+second_login_preserved_hash: True
+non_user_tables_unchanged: True
+completed_at_utc: 2026-10-22T12:14:02.810930+00:00

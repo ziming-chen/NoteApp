@@ -1,0 +1,76 @@
+{
+  "screenshots": [
+    {
+      "file": "01_http_plaintext.jpg",
+      "source": "Original supplied screenshot; image bytes preserved",
+      "received_at_utc": "2026-10-22T08:35:06.694Z",
+      "sha256": "534740c63efc2797a44a20c4adde6ca4444f428fd08dd36d08bc19f0d9b1fc20",
+      "width": 1225,
+      "height": 868
+    },
+    {
+      "file": "03_github_certificate.jpg",
+      "source": "Original supplied screenshot; image bytes preserved",
+      "received_at_utc": "2026-10-22T08:58:14.413Z",
+      "sha256": "d32d30ffde3f7c616984c7d047eca4970aaa2ce07404d3e8ef08eaab0448b478",
+      "width": 1996,
+      "height": 1248
+    },
+    {
+      "file": "04_github_chain.jpg",
+      "source": "Original supplied screenshot; image bytes preserved",
+      "received_at_utc": "2026-10-22T08:58:14.413Z",
+      "sha256": "db34789e3aa94f5fabc190207a5f3c522ea1ce725d8958777d05b3389fd545a5",
+      "width": 1996,
+      "height": 1248
+    },
+    {
+      "file": "05_localhost_warning.jpg",
+      "source": "Original supplied screenshot; image bytes preserved",
+      "received_at_utc": "2026-10-22T08:59:05.920Z",
+      "sha256": "fae072b1ef28f3161bf691439bdd4cd875d2b8b778cc7d1e6336f247e76a1ed8",
+      "width": 1996,
+      "height": 1248
+    },
+    {
+      "file": "06_localhost_certificate.jpg",
+      "source": "Original supplied screenshot; image bytes preserved",
+      "received_at_utc": "2026-10-22T08:59:27.508Z",
+      "sha256": "39b38fe4d1df880b322efa2c92304f1a3eff57fab138f6c68afd4f2d59c7757c",
+      "width": 1996,
+      "height": 1248
+    },
+    {
+      "file": "07_localhost_chain.jpg",
+      "source": "Original supplied screenshot; image bytes preserved",
+      "received_at_utc": "2026-10-22T08:59:27.508Z",
+      "sha256": "83d05fd4c8fb587846f47908a215d2f9bece0667e2d706e011f814e9989d1481",
+      "width": 1996,
+      "height": 1248
+    },
+    {
+      "file": "08_https_dashboard.jpg",
+      "source": "Original supplied screenshot; image bytes preserved",
+      "received_at_utc": "2026-10-22T09:05:32.354Z",
+      "sha256": "c640e9ab041ed3dd4af7ae578554bc0899f8ca8c710e22e416be262985df6efb",
+      "width": 1280,
+      "height": 1600
+    },
+    {
+      "file": "09_tls_packets.jpg",
+      "source": "Original supplied screenshot; image bytes preserved",
+      "received_at_utc": "2026-10-22T09:07:05.051Z",
+      "sha256": "800d3bdd313b5603bc2af01c36c7eb0f81002ba4e1e03630a458071e63ed828a",
+      "width": 1469,
+      "height": 867
+    },
+    {
+      "file": "02_https_ciphertext.jpg",
+      "source": "Original supplied screenshot; image bytes preserved",
+      "received_at_utc": "2026-10-22T09:08:52.296Z",
+      "sha256": "3fbb978d9a0f0bb847eb605b42c852434082ce582696f60800f51b9b2e4782d7",
+      "width": 1225,
+      "height": 1259
+    }
+  ]
+}

@@ -1,2 +1,12 @@
 # Preserve the exact signed CSV bytes when cloning on Windows or Linux.
 docs/session04/results/*.csv -text whitespace=cr-at-eol
+
+# PDFs and captures must remain binary; conversion can invalidate their offsets.
+*.pdf binary
+*.pcapng binary
+
+# Preserve the exact bytes of Session 05 evidence and its checksum inventory.
+docs/session05/** -text whitespace=cr-at-eol
+# Archived originals retain their source whitespace, including HTML and patches.
+docs/session05/lab1/** -whitespace
+docs/session05/lab2/** -whitespace

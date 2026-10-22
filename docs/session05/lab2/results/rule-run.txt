@@ -1,0 +1,4 @@
+Optional rule attack: 170 public entries + 6 username-pw guesses
+Recovered 5/6 in 0.1728 ms
+Additional account: marie (mariepw)
+Held out: raj

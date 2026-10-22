@@ -1,0 +1,6 @@
+15 password checks passed.
+75 existing comment and HMAC checks passed.
+Password helper statement and branch coverage: 100% (13 statements, 4 branches).
+Pre-migration tests used disposable databases; application database was unchanged at that stage.
+Live HTTPS migration subsequently passed; only alice.password changed.
+Second correct login passed and preserved the stored hash; incorrect passwords were denied.

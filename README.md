@@ -11,14 +11,18 @@
 | Session 03: symmetric encryption lab | [Caesar frequency analysis and AES-ECB/GCM image comparison](docs/session03/lab/README.md) |
 | Session 03 homework: encrypted comments | [AES-256-GCM storage, migration and verification](docs/session03/homework/README.md) |
 | Session 04 homework: export integrity | [HMAC-SHA-256 CSV export and upload verification](docs/session04/README.md) |
+| Session 05 Lab 1: HTTPS traffic audit | [Combined report, plaintext/TLS captures and certificate comparison](docs/session05/README.md#lab-1---traffic-in-transit) |
+| Session 05 Lab 2: password storage audit | [MD5 experiment, Argon2id migration and measured cost](docs/session05/README.md#lab-2---password-storage) |
 
-The active application includes comment encryption and authenticated CSV exports. Follow the [Session 04 setup instructions](docs/session04/README.md#run-and-demonstrate) to initialize both independent keys before starting Docker Compose. The Windows launcher initializes them automatically. Run the regression suite from the repository root after installing `requirements-dev.txt`, with the local lab PostgreSQL service available on port 15432:
+**Session 05 pair:** 陈子明 Chen Ziming (CHU ID 2023905333) and 吴彦澜 Wu Yanlan (CHU ID 2023905420).
+
+The active application includes comment encryption, authenticated CSV exports and Argon2id upgrade-on-login. The optional HTTPS overlay puts nginx in front of Flask and removes the direct web port. Follow the [Session 05 run instructions](docs/session05/README.md#run-the-submitted-application) for the HTTPS setup and local certificate generation. The existing Windows launcher uses plain HTTP; use the three-file Compose command for HTTPS. Run the regression suite from the repository root after installing `requirements-dev.txt`, with the local lab PostgreSQL service available on port 15432:
 
 ```powershell
-python -m pytest -q --cov=export_hmac --cov=comment_crypto --cov=comment_migration --cov-branch --cov-report=term-missing --cov-fail-under=95
+python -m pytest -q --cov=export_hmac --cov=comment_crypto --cov=comment_migration --cov=password_storage --cov-branch --cov-report=term-missing --cov-fail-under=95
 ```
 
-Verified 22 October 2026: 75 application tests and 52 standalone lab tests passed. The comment encryption, migration and export HMAC modules each have 100% statement and branch coverage. Integration tests use disposable databases and do not modify the running application's database. See the [verification record](docs/coursework-verification-20261022.json).
+The earlier Session 02-04 verification recorded 75 application tests and 52 standalone lab tests; its [record](docs/coursework-verification-20261022.json) is retained. Session 05 adds 15 password checks, bringing the application suite to 90 checks. Integration tests use disposable databases. [Session 05 verification](docs/session05/submission-verification.json) records the current test and coverage results. The application remains a deliberately vulnerable course target: legacy accounts migrate only after a correct login, and other teaching flaws remain outside these changes.
 
 ## Session 02 Threat Model
 

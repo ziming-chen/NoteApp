@@ -1,0 +1,111 @@
+{
+  "measured_at_utc": "2026-10-22T12:14:04.476193+00:00",
+  "operator": "Assistant execution on the user's machine, authorized by user",
+  "environment": {
+    "python": "3.11.17",
+    "platform": "Linux-6.18.40.1-microsoft-standard-WSL2-x86_64-with-glibc2.41",
+    "argon2_cffi": "23.1.0",
+    "cpu": "13th Gen Intel(R) Core(TM) i9-13900HX",
+    "logical_cpus_visible": 32
+  },
+  "method": "time.perf_counter_ns; primary 100000 MD5 hexdigests then one fresh Argon2 hash; same container",
+  "argon2_parameters": {
+    "type": "ID",
+    "version": 19,
+    "memory_kib": 65536,
+    "time_cost": 3,
+    "parallelism": 4,
+    "hash_len": 32,
+    "salt_len": 16
+  },
+  "primary": {
+    "index": 0,
+    "md5_operations": 100000,
+    "md5_elapsed_ns": 29970652,
+    "argon2_operations": 1,
+    "argon2_elapsed_ns": 36893045,
+    "argon2_elapsed_ms": 36.893045,
+    "md5_per_second": 3336597.415364871,
+    "argon2_per_second": 27.105379889353127,
+    "md5_per_day": 288282016687.52484,
+    "argon2_per_day": 2341904.82244011,
+    "slowdown_ratio": 123097.23859193988
+  },
+  "subsequent_runs": [
+    {
+      "index": 1,
+      "md5_operations": 100000,
+      "md5_elapsed_ns": 30206226,
+      "argon2_operations": 1,
+      "argon2_elapsed_ns": 37738715,
+      "argon2_elapsed_ms": 37.738715,
+      "md5_per_second": 3310575.773352156,
+      "argon2_per_second": 26.497987544090996,
+      "md5_per_day": 286033746817.6263,
+      "argon2_per_day": 2289426.123809462,
+      "slowdown_ratio": 124936.8755964416
+    },
+    {
+      "index": 2,
+      "md5_operations": 100000,
+      "md5_elapsed_ns": 30244307,
+      "argon2_operations": 1,
+      "argon2_elapsed_ns": 31210731,
+      "argon2_elapsed_ms": 31.210731,
+      "md5_per_second": 3306407.3843715447,
+      "argon2_per_second": 32.04026204961364,
+      "md5_per_day": 285673598009.7015,
+      "argon2_per_day": 2768278.6410866184,
+      "slowdown_ratio": 103195.3914500339
+    },
+    {
+      "index": 3,
+      "md5_operations": 100000,
+      "md5_elapsed_ns": 29641625,
+      "argon2_operations": 1,
+      "argon2_elapsed_ns": 32498580,
+      "argon2_elapsed_ms": 32.49858,
+      "md5_per_second": 3373634.2052772073,
+      "argon2_per_second": 30.770575206670568,
+      "md5_per_day": 291481995335.9507,
+      "argon2_per_day": 2658577.697856337,
+      "slowdown_ratio": 109638.32111093774
+    },
+    {
+      "index": 4,
+      "md5_operations": 100000,
+      "md5_elapsed_ns": 29047350,
+      "argon2_operations": 1,
+      "argon2_elapsed_ns": 32050708,
+      "argon2_elapsed_ms": 32.050708,
+      "md5_per_second": 3442654.8377046445,
+      "argon2_per_second": 31.20055881448859,
+      "md5_per_day": 297445377977.6813,
+      "argon2_per_day": 2695728.2815718143,
+      "slowdown_ratio": 110339.52494805896
+    },
+    {
+      "index": 5,
+      "md5_operations": 100000,
+      "md5_elapsed_ns": 29251240,
+      "argon2_operations": 1,
+      "argon2_elapsed_ns": 31183709,
+      "argon2_elapsed_ms": 31.183709,
+      "md5_per_second": 3418658.4910588404,
+      "argon2_per_second": 32.068026288983134,
+      "md5_per_day": 295372093627.4838,
+      "argon2_per_day": 2770677.471368143,
+      "slowdown_ratio": 106606.45155555799
+    }
+  ],
+  "subsequent_argon2_median_ms": 32.050708,
+  "supplementary_verify_ns": [
+    30690185,
+    32930676,
+    29860662,
+    31058417,
+    31708394
+  ],
+  "supplementary_verify_median_ms": 31.058417,
+  "limits": "Hash-generation cost proxy; daily figures are linear estimates assuming uninterrupted sequential work, not observed 24-hour attacks or GPU/parallel cracking rates."
+}

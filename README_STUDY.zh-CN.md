@@ -1,5 +1,7 @@
 # NotesApp Session 02：中文学习版
 
+最新第五课成果：[Lab 1 + Lab 2 合并报告与中文对照](docs/session05/README_STUDY.zh-CN.md)。当前已加入 HTTPS 覆盖层和 Argon2id 登录升级；两项实验的真实预测、原始抓包、计时和迁移证据都在 `docs/session05`。这里后面的第二课说明继续作为历史观察保留。首次复现 HTTPS 请按[英文运行步骤](docs/session05/README.md#run-the-submitted-application)初始化密钥并生成本机证书；原 Windows 启动器仍使用普通 HTTP 配置。
+
 本文件保留第二节课的威胁建模说明。当前应用已加入 [Session 03 评语加密作业](docs/session03/homework/README_STUDY.zh-CN.md)与 [Session 04 HMAC 导出验证](docs/session04/README_STUDY.zh-CN.md)。第三节课的两项独立实验见 [凯撒密码与 AES 图片实验](docs/session03/lab/README_STUDY.zh-CN.md)；[Project 1 小组材料](project1/README_STUDY.zh-CN.md)另行保留。修改前的源码与报告仍在本地课程归档 `../Assignments/Session02/pre-homework`，便于对照。
 
 这份文件用于自己学习。交给老师的英文报告是同目录的 [README.md](README.md)。本次完成的是“画清楚系统里的数据流，再对每条数据流提出六类安全问题”，不是渗透测试报告。

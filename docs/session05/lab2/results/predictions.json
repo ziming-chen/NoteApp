@@ -1,0 +1,30 @@
+{
+  "pair": [
+    {
+      "full_name": "陈子明 Chen Ziming",
+      "chu_student_id": "2023905333"
+    },
+    {
+      "full_name": "吴彦澜 Wu Yanlan",
+      "chu_student_id": "2023905420"
+    }
+  ],
+  "md5_dictionary_attack": {
+    "predicted_cracked_accounts": 6,
+    "total_accounts": 6,
+    "predicted_elapsed_ms": 10,
+    "source": "User prediction recorded before running the attack",
+    "recorded_at_utc": "2026-10-22T09:46:22.094084+00:00"
+  },
+  "alice_first_login": {
+    "predicted_storage": "hash",
+    "reason_provided": false,
+    "source": "User replied hash before querying the migrated database",
+    "recorded_at_utc": "2026-10-22T12:12:28.241371+00:00"
+  },
+  "argon2_vs_md5": {
+    "predicted_slowdown_times": 10,
+    "source": "User prediction before benchmark",
+    "recorded_at_utc": "2026-10-22T12:12:28.241708+00:00"
+  }
+}

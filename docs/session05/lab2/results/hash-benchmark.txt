@@ -1,0 +1,9 @@
+Course hash-cost benchmark (assistant executed on the local machine)
+Measured UTC: 2026-10-22T12:14:04.476193+00:00
+MD5: 3,336,597 operations/second; 288,282,016,688 / day (estimated)
+Argon2: 36.893 ms / operation; 27.105 / second; 2,341,905 / day (estimated)
+Argon2 slowdown: 123,097 times per operation
+Argon2 parameters: {'type': 'ID', 'version': 19, 'memory_kib': 65536, 'time_cost': 3, 'parallelism': 4, 'hash_len': 32, 'salt_len': 16}
+Five subsequent Argon2 runs median: 32.051 ms
+Five supplementary verification runs median: 31.058 ms
+Hash-generation cost proxy; daily figures are linear estimates assuming uninterrupted sequential work, not observed 24-hour attacks or GPU/parallel cracking rates.

@@ -1,0 +1,38 @@
+{
+  "checked_at_utc": "2026-10-22T09:56:09.833037+00:00",
+  "new_password_checks_passed": 15,
+  "existing_comment_and_hmac_checks_passed": 75,
+  "password_module_statement_and_branch_coverage_percent": 100,
+  "main_database_unchanged": true,
+  "application_source_prepared": true,
+  "container_rebuilt": true,
+  "alice_migrated": true,
+  "files": [
+    {
+      "path": "web/app.py",
+      "sha256": "42738c954c3b2696ddfe034d4e5bceb2684567ef8209cc3557cfd04ff6924374"
+    },
+    {
+      "path": "web/password_storage.py",
+      "sha256": "c54ed9477fba9bf4913bb48991d812d8cb8534978fb2f67fbc1cda6057b58065"
+    },
+    {
+      "path": "web/requirements.txt",
+      "sha256": "09a5b9d49bdf5551dca3541a6217209b3f5d43bfa9ace9c27da4f4f7eee5ea2d"
+    },
+    {
+      "path": "tests/test_password_storage.py",
+      "sha256": "0654c93c0e737b95536c2645395f90491dad1abe13b89715985f2cc8af5e861d"
+    },
+    {
+      "path": "tests/test_password_login.py",
+      "sha256": "5876f9d73d83fcafa542e6df24d30f1bfe5f9b03372a2365213939676e5813b1"
+    },
+    {
+      "path": "ruff.toml",
+      "sha256": "090b0696f111a1ba8bca3dbebb00af156136d4718a8ea1ebf25ee6cf57d74233"
+    }
+  ],
+  "live_verification_record": "live-migration.json",
+  "runtime_verified_at_utc": "2026-10-22T12:15:34.691677+00:00"
+}

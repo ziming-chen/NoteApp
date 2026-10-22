@@ -1,0 +1,240 @@
+{
+  "created_at_utc": "2026-10-22T12:54:31.078986+00:00",
+  "scope": "Reformatted original pair findings; no measurements rerun; no classmate data imported",
+  "source_archives": [
+    {
+      "name": "Session05_HTTPS_Audit_Chen_Ziming_Wu_Yanlan.zip",
+      "sha256": "dac2f827a9be9ba731ad1a93728c4e6a22d0ee341a25823cb65e07c10971984d"
+    },
+    {
+      "name": "Session05_Password_Audit_Chen_Ziming_Wu_Yanlan.zip",
+      "sha256": "135dadf587234efae127a1bfea5975375be85674d592cec3fa6f802b75fe4965"
+    }
+  ],
+  "files": [
+    {
+      "path": "lab1/evidence/01_http_plaintext.jpg",
+      "sha256": "534740c63efc2797a44a20c4adde6ca4444f428fd08dd36d08bc19f0d9b1fc20"
+    },
+    {
+      "path": "lab1/evidence/02_https_ciphertext.jpg",
+      "sha256": "3fbb978d9a0f0bb847eb605b42c852434082ce582696f60800f51b9b2e4782d7"
+    },
+    {
+      "path": "lab1/evidence/03_github_certificate.jpg",
+      "sha256": "d32d30ffde3f7c616984c7d047eca4970aaa2ce07404d3e8ef08eaab0448b478"
+    },
+    {
+      "path": "lab1/evidence/04_github_chain.jpg",
+      "sha256": "db34789e3aa94f5fabc190207a5f3c522ea1ce725d8958777d05b3389fd545a5"
+    },
+    {
+      "path": "lab1/evidence/05_localhost_warning.jpg",
+      "sha256": "fae072b1ef28f3161bf691439bdd4cd875d2b8b778cc7d1e6336f247e76a1ed8"
+    },
+    {
+      "path": "lab1/evidence/06_localhost_certificate.jpg",
+      "sha256": "39b38fe4d1df880b322efa2c92304f1a3eff57fab138f6c68afd4f2d59c7757c"
+    },
+    {
+      "path": "lab1/evidence/07_localhost_chain.jpg",
+      "sha256": "83d05fd4c8fb587846f47908a215d2f9bece0667e2d706e011f814e9989d1481"
+    },
+    {
+      "path": "lab1/evidence/08_https_dashboard.jpg",
+      "sha256": "c640e9ab041ed3dd4af7ae578554bc0899f8ca8c710e22e416be262985df6efb"
+    },
+    {
+      "path": "lab1/evidence/09_tls_packets.jpg",
+      "sha256": "800d3bdd313b5603bc2af01c36c7eb0f81002ba4e1e03630a458071e63ed828a"
+    },
+    {
+      "path": "lab1/evidence/manifest.json",
+      "sha256": "fcb3fa42b96a7ff92af865a0211932761fe560b2e9cd62f91e5844c5dcf76a7d"
+    },
+    {
+      "path": "lab1/results/login-http.pcapng",
+      "sha256": "11da57b463ddd4c661f969ea29fd0fe52004a4bae102e2f326cdee3f0b6e94f0"
+    },
+    {
+      "path": "lab1/results/login-https.pcapng",
+      "sha256": "62060bfb4ec2e0b2f8a2c2a3e6ea35eb546d28d9285d5cf7e721e346b782a12e"
+    },
+    {
+      "path": "lab1/results/http-stream.txt",
+      "sha256": "8de3c822c9d9c0d6378398f6ac381118e401988266942fde30b23ef0537c86db"
+    },
+    {
+      "path": "lab1/results/https-stream6.txt",
+      "sha256": "4b179282233d78d82ad0bd92acaf4de950ad362f7412b31580523833d997e69f"
+    },
+    {
+      "path": "lab1/results/downgrade-check.txt",
+      "sha256": "4b36677d07a4879696db05513891a1cc34891101dee93bbd0753c2475477a6a5"
+    },
+    {
+      "path": "lab1/results/audit-evidence.json",
+      "sha256": "b6214042629397e3393346fb0b5d9d8d13f06c377347d4e935ce2f3b5bdbd186"
+    },
+    {
+      "path": "lab1/configuration/docker-compose.https.yml",
+      "sha256": "23dea040e6db26636e3ba4117508ab2da2bcb960b09e3c204309f63dcc2b4733"
+    },
+    {
+      "path": "lab1/configuration/nginx.conf",
+      "sha256": "c52ab4cd4953ff77c4f882cd746c2bb51ff55f11b06da874e5009dfff304689d"
+    },
+    {
+      "path": "lab1/configuration/notesapp.crt",
+      "sha256": "dc88441b35185bba1ea047e41ff959c310cfde69ae30dca8a75861d4c1b8cbe8"
+    },
+    {
+      "path": "lab2/crack/crack.py",
+      "sha256": "8f816c25a10e6c1d99506fd2607c911f974ec417db0598fa5b503a27b0cb9cf9"
+    },
+    {
+      "path": "lab2/crack/leaked_users.txt",
+      "sha256": "a47c5eb261f22a33b64d98cad1a1bc5cadb16d9097b3f177dfdf962ff0e5f7ee"
+    },
+    {
+      "path": "lab2/crack/make_dump.py",
+      "sha256": "48ee0317cde6352788f34ed930862a4949d511328ca73f44613ad6c87dea42a6"
+    },
+    {
+      "path": "lab2/crack/rule_attack.py",
+      "sha256": "535e59c29dcade46495839608c94fb60c215055c05ee04922e1bca3098b19872"
+    },
+    {
+      "path": "lab2/crack/wordlist.txt",
+      "sha256": "3614d52dbb45e8b0080821bdf1a0c0ad2cbac2cc85551239f4f2bc2a9ebc5e3f"
+    },
+    {
+      "path": "lab2/evidence/01_md5_dictionary_attack.jpg",
+      "sha256": "c35ee3b41721c7970069b83d2953eabd59c266eeeaf3f07e479b148212fd9627"
+    },
+    {
+      "path": "lab2/evidence/02_alice_first_login.png",
+      "sha256": "b393237cad395794fd0264a269a479f33ff4bf24896f76a85a06a9fab87a7e05"
+    },
+    {
+      "path": "lab2/evidence/03_wrong_password_denied.png",
+      "sha256": "d273167db0541f4c8ff6154bb744fa872683cedba213ae7e50926e09b391693b"
+    },
+    {
+      "path": "lab2/evidence/04_alice_second_login.png",
+      "sha256": "b393237cad395794fd0264a269a479f33ff4bf24896f76a85a06a9fab87a7e05"
+    },
+    {
+      "path": "lab2/evidence/manifest.json",
+      "sha256": "ffdf4dec8c2c315ffb3caffea9d0ebe13c497e39a4f61e3fbcd48bce7c6544c3"
+    },
+    {
+      "path": "lab2/implementation/password-storage.patch",
+      "sha256": "7bf1987fd6f23deaa0b0dcba52f44199564f367ecb96a2b22d26bcb135ac2829"
+    },
+    {
+      "path": "lab2/implementation/tests/test_password_login.py",
+      "sha256": "5876f9d73d83fcafa542e6df24d30f1bfe5f9b03372a2365213939676e5813b1"
+    },
+    {
+      "path": "lab2/implementation/tests/test_password_storage.py",
+      "sha256": "0654c93c0e737b95536c2645395f90491dad1abe13b89715985f2cc8af5e861d"
+    },
+    {
+      "path": "lab2/implementation/web/password_storage.py",
+      "sha256": "c54ed9477fba9bf4913bb48991d812d8cb8534978fb2f67fbc1cda6057b58065"
+    },
+    {
+      "path": "lab2/implementation/web/requirements.txt",
+      "sha256": "09a5b9d49bdf5551dca3541a6217209b3f5d43bfa9ace9c27da4f4f7eee5ea2d"
+    },
+    {
+      "path": "lab2/measure_hashes.py",
+      "sha256": "81a848d13bc7e2705ee489e49c75223ed0dd17f1b2f703ca774a627a06b2db0c"
+    },
+    {
+      "path": "lab2/results/alice-storage.txt",
+      "sha256": "da20b5333a2457e6fdd0b169ac40b6e2d8890ae82db4b35f00c8275e8c3ebd01"
+    },
+    {
+      "path": "lab2/results/benchmark-runs/20261022T121404506855Z.json",
+      "sha256": "61aeffe2b01e5f4b72463ea7f1d49c3343c6b8842dace5dd14425e6bbac5adb1"
+    },
+    {
+      "path": "lab2/results/database-preservation.json",
+      "sha256": "6e894b3c35772e855765fb0672a2caae7d353a618c99ba37b927424cc153f021"
+    },
+    {
+      "path": "lab2/results/hash-benchmark.json",
+      "sha256": "61aeffe2b01e5f4b72463ea7f1d49c3343c6b8842dace5dd14425e6bbac5adb1"
+    },
+    {
+      "path": "lab2/results/hash-benchmark.txt",
+      "sha256": "e2ec7d02655c477786f59d70b38c911387bf6d869736fd08a00e6c3248bcf76c"
+    },
+    {
+      "path": "lab2/results/implementation-checks.json",
+      "sha256": "fe5fd4236f36f0728c5e4a9cb77698351efb3872b720a2a923c6737517009838"
+    },
+    {
+      "path": "lab2/results/implementation-checks.txt",
+      "sha256": "7faa90d9a2b96f4b92f164c592075be5206b0cf96cf984e856828ab17c81183e"
+    },
+    {
+      "path": "lab2/results/live-migration.json",
+      "sha256": "90c0fb201fbda01aa89a928cbe87dad471ec017f38413ed445f3f6654e0ca6ff"
+    },
+    {
+      "path": "lab2/results/live-migration.txt",
+      "sha256": "66f0140049b86cb172509b1949b2d98cf0292f5a1683094fb3ce8a41accefdd6"
+    },
+    {
+      "path": "lab2/results/md5-run.json",
+      "sha256": "df3eef9f097e2f980f3e75606c4efa9908b7a3b71b61aeaf11fe94696f1d4a9a"
+    },
+    {
+      "path": "lab2/results/md5-run.txt",
+      "sha256": "049a2f81ff94e1ecc429dc3c9ca6e9af8b8dd433fd0168c497116991b592e2b1"
+    },
+    {
+      "path": "lab2/results/md5-runs/20261022T095046801900Z.json",
+      "sha256": "df3eef9f097e2f980f3e75606c4efa9908b7a3b71b61aeaf11fe94696f1d4a9a"
+    },
+    {
+      "path": "lab2/results/password-coverage.json",
+      "sha256": "2bc523375dd56bdf7588ee7b64ddf681f9ff10b7a5f80bb6e080e344448521c9"
+    },
+    {
+      "path": "lab2/results/predictions.json",
+      "sha256": "1eb8189119f15639e660fe62e4e6021c84a6c94ce9ae19584ef6214c5d454dfe"
+    },
+    {
+      "path": "lab2/results/rule-run.json",
+      "sha256": "62aa9c0c116b571dcbda7becc5eb03903793a29d1c718617cf4e9e4da7f4845d"
+    },
+    {
+      "path": "lab2/results/rule-run.txt",
+      "sha256": "17bfd587944ec77fc560ea21b6bbaa26a5c18b0b61f7a6fe651fb998c69a01b5"
+    },
+    {
+      "path": "lab2/results/runtime-verification.txt",
+      "sha256": "940cb55b2b7cc07d4ffe68bb4df19218498795394e9cd683824c6428d7b58439"
+    },
+    {
+      "path": "lab2/run_benchmark.py",
+      "sha256": "bdd9b6b0607bf62c3cdf679a413c2ce70e118331962b73808ff67eaa29e29989"
+    },
+    {
+      "path": "lab2/sources/manifest.json",
+      "sha256": "947c2d4d62e81667f983d252f55c5ca0f08365393ddc341f3cd519590cbd27e4"
+    },
+    {
+      "path": "lab2/sources/password-audit_source.html",
+      "sha256": "a00f9ca6e98f6930d236cb4c05b7fd1697a2369189a3169f0f50f5a4fe965c71"
+    },
+    {
+      "path": "lab2/verify_live.py",
+      "sha256": "844e8094d9191da02ef43f1f795af47e1b31341e92cc2420b881b42f4e1e9a2c"
+    }
+  ]
+}

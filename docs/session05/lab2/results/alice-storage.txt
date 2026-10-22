@@ -1,0 +1,5 @@
+ username |                                             password                                              
+----------+---------------------------------------------------------------------------------------------------
+ alice    | $argon2id$v=19$m=65536,t=3,p=4$cC+JIvFxMY8j/9H9Y5SgLg$76fVFVvVWCXPQ/k79+XROqKbrHPI5s1Yk/yvocDByDE
+(1 row)
+
