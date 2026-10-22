@@ -1,0 +1,27 @@
+{
+  "verified_date": "2026-10-22",
+  "scope": "Sessions 02-04; Session 05 local configuration excluded",
+  "comment_and_hmac_regression": {
+    "passed": 75,
+    "database": "PostgreSQL 15; disposable test databases on the local lab server",
+    "statement_and_branch_coverage": {
+      "comment_crypto": 100,
+      "comment_migration": 100,
+      "export_hmac": 100
+    }
+  },
+  "symmetric_encryption_lab": {
+    "passed": 52,
+    "combined_statement_and_branch_coverage_percent": 98.85
+  },
+  "ruff": "passed: web, tests, Session 04 helpers and Session 03 homework helper",
+  "hmac_demo": "original accepted; changed grade rejected; temporary in-memory key",
+  "staged_hmac_evidence": "byte-for-byte match; original accepted; tampered and unsigned rejected",
+  "relative_report_links": {
+    "files_checked": 11,
+    "missing_targets": 0
+  },
+  "staged_secret_scan": "no private key bytes, base64 or hex encodings, or selected private-key and service-token patterns found",
+  "session05_staged_files": 0,
+  "live_application": "not restarted or reconfigured during this verification"
+}

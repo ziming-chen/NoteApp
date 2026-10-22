@@ -1,0 +1,136 @@
+{
+  "checked_at": "2026-10-07T18:16:21.140895+02:00",
+  "source_commit": "1c83e422429c4b784411701ffd797b5ab5f397dc",
+  "docker_desktop": "Docker Desktop 4.94.0 (241994)",
+  "docker_engine": "29.8.2",
+  "compose": "5.5.1",
+  "web": {
+    "python": "3.11.17",
+    "flask": "3.0.3",
+    "uid": 0
+  },
+  "health": {
+    "path": "/healthz",
+    "status": 200,
+    "body": "ok"
+  },
+  "database": {
+    "users": 35,
+    "classes": 4,
+    "grades": 60,
+    "postgresql": "15.19 (Debian 15.19-1.pgdg13+2)"
+  },
+  "application_records_unchanged": true,
+  "table_snapshots": {
+    "users": {
+      "count": 35,
+      "sha256": "ab532323281f0878cba6a82d1f1c6162d260c58926c37f90a18be2b7522df660"
+    },
+    "classes": {
+      "count": 4,
+      "sha256": "a5447375ee3ed3f535df8f09937fdbbf6622d7cd17c0e64bd92203546cba2ae1"
+    },
+    "notes": {
+      "count": 60,
+      "sha256": "449327c7418b63b9f5f8a685c1cac1318596afa42ace75ccb76604698643fd81"
+    },
+    "enrollments": {
+      "count": 60,
+      "sha256": "e4d39c3d4c279f820cedd4ae243d59509874217a867c7f9bd1beccc27d3219b7"
+    }
+  },
+  "exports": [
+    {
+      "file": "computer-science.csv",
+      "course": "Computer Science",
+      "rows": 11,
+      "sha256": "378bb6240a805180a06cd8fe0830d70a539b4e1ec59a6750449054329b001899"
+    },
+    {
+      "file": "history.csv",
+      "course": "History",
+      "rows": 10,
+      "sha256": "7da16086de28cc811bc2575b4df6ccc8a022c8aee4b1c668723f976d60216ad4"
+    },
+    {
+      "file": "mathematics.csv",
+      "course": "Mathematics",
+      "rows": 16,
+      "sha256": "0625533075e884e2248c3d4acdd150a8f3532a365b42d378c2555b0cb63ac017"
+    },
+    {
+      "file": "physics.csv",
+      "course": "Physics",
+      "rows": 23,
+      "sha256": "2a267a62fe216a028c9904ff41bd287b3ebb5185660971e1686e94b325a0689f"
+    }
+  ],
+  "exports_match_live_database": true,
+  "permissions": [
+    "777 /var/log/notesapp",
+    "777 /var/log/notesapp/app.log",
+    "666 /app/config.env",
+    "777 /app/backups",
+    "660 /var/run/docker.sock"
+  ],
+  "containers": [
+    {
+      "service": "db",
+      "name": "noteapp-db-1",
+      "image": "postgres:15",
+      "image_id": "sha256:7e2070cf6ad06fb3cbbd141b1bafbb7fd5bb63e2b6001e6daf34448eb555e4b3",
+      "running": true,
+      "health": "healthy",
+      "configured_user": "",
+      "ports": {
+        "5432/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "15432"
+          }
+        ]
+      },
+      "mounts": [
+        {
+          "type": "bind",
+          "destination": "/docker-entrypoint-initdb.d/init.sql",
+          "read_write": false
+        },
+        {
+          "type": "volume",
+          "destination": "/var/lib/postgresql/data",
+          "read_write": true
+        }
+      ]
+    },
+    {
+      "service": "web",
+      "name": "noteapp-web-1",
+      "image": "noteapp-web",
+      "image_id": "sha256:a60817565be2e9da8b0e102cc937675891b0dffde1fca75dca17caf0001c5b14",
+      "running": true,
+      "health": null,
+      "configured_user": "",
+      "ports": {
+        "5000/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "8080"
+          }
+        ]
+      },
+      "mounts": [
+        {
+          "type": "bind",
+          "destination": "/host",
+          "read_write": true
+        },
+        {
+          "type": "bind",
+          "destination": "/var/run/docker.sock",
+          "read_write": true
+        }
+      ]
+    }
+  ]
+}

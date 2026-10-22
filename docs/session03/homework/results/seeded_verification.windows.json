@@ -1,0 +1,24 @@
+{
+  "checked_at_utc": "2026-10-08T10:41:30.598366+00:00",
+  "database_environment": "isolated Windows PostgreSQL; disposable database",
+  "server_version": "17.6",
+  "input": "supplied db/init.sql seed; not the existing Docker database",
+  "request_transport": "Flask test client",
+  "counts": {
+    "users": 35,
+    "classes": 4,
+    "enrollments": 60,
+    "notes": 60
+  },
+  "migrated_comments": 60,
+  "all_non_comment_columns_preserved": true,
+  "all_comments_recovered_exactly": true,
+  "authenticated_api_reads_checked": 60,
+  "teacher_and_student_pages_checked": true,
+  "full_csv_rows": 60,
+  "four_class_exports_total_rows": 60,
+  "key_file_reload_and_idempotent_migration": true,
+  "stored_ciphertexts_unchanged_on_reload": true,
+  "original_notes_sha256": "170e2e5b2d4d0112771cec0bb1a3cd8006a501d0b88fc834203afe1e7b00f024",
+  "existing_docker_database_migrated": false
+}

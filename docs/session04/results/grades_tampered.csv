@@ -1,0 +1,62 @@
+student,class,grade,comment
+alice,Computer Science,11.5,Needs to review chapter 3.
+grace,Computer Science,9.4,Very strong final exam.
+heidi,Computer Science,8.5,"Late submission, but good quality."
+liam,Computer Science,18.8,Creative approach to the project.
+mia,Computer Science,9.8,Creative approach to the project.
+quentin,Computer Science,13.9,Good teamwork.
+rupert,Computer Science,12.4,"Late submission, but good quality."
+sybil,Computer Science,16.3,Needs to review chapter 3.
+trent,Computer Science,8.7,Very strong final exam.
+ursula,Computer Science,15.5,Needs to review chapter 3.
+victor,Computer Science,12.8,Missed two labs.
+emma,History,9.3,"Late submission, but good quality."
+frank,History,10.9,"Solid work, keep it up."
+lucas,History,10.5,"Late submission, but good quality."
+mallory,History,16.0,Excellent participation in class.
+niaj,History,11.6,"Solid work, keep it up."
+noah,History,16.3,"Late submission, but good quality."
+nora,History,10.6,Good teamwork.
+olivia,History,18.0,Good teamwork.
+quentin,History,9.5,Creative approach to the project.
+zack,History,17.7,Great improvement this term.
+alice,Mathematics,16.2,"Late submission, but good quality."
+bob,Mathematics,12.6,"Solid work, keep it up."
+carol,Mathematics,10.2,Creative approach to the project.
+dave,Mathematics,15.7,Should ask more questions.
+eve,Mathematics,9.1,Very strong final exam.
+frank,Mathematics,17.3,Good teamwork.
+ivan,Mathematics,12.2,Missed two labs.
+judy,Mathematics,15.4,Needs to review chapter 3.
+liam,Mathematics,16.4,Excellent participation in class.
+lucas,Mathematics,8.2,Creative approach to the project.
+nora,Mathematics,18.4,Needs to review chapter 3.
+peggy,Mathematics,17.7,Missed two labs.
+sybil,Mathematics,9.7,Excellent participation in class.
+wendy,Mathematics,17.6,Great improvement this term.
+xavier,Mathematics,11.3,Creative approach to the project.
+yvonne,Mathematics,18.1,Good teamwork.
+bob,Physics,9.0,"Late submission, but good quality."
+carol,Physics,12.6,Missed two labs.
+dave,Physics,16.3,Excellent participation in class.
+emma,Physics,17.9,Missed two labs.
+eve,Physics,10.4,Should ask more questions.
+grace,Physics,8.9,Great improvement this term.
+heidi,Physics,10.1,Needs to review chapter 3.
+ivan,Physics,17.4,Needs to review chapter 3.
+judy,Physics,12.1,"Late submission, but good quality."
+mallory,Physics,13.1,Great improvement this term.
+mia,Physics,17.6,Very strong final exam.
+niaj,Physics,10.5,"Solid work, keep it up."
+noah,Physics,15.8,Very strong final exam.
+olivia,Physics,10.9,"Late submission, but good quality."
+peggy,Physics,15.2,Very strong final exam.
+rupert,Physics,19.0,Excellent participation in class.
+trent,Physics,14.6,Missed two labs.
+ursula,Physics,17.5,"Solid work, keep it up."
+victor,Physics,11.7,Great improvement this term.
+wendy,Physics,18.7,Excellent participation in class.
+xavier,Physics,14.7,Excellent participation in class.
+yvonne,Physics,13.9,Creative approach to the project.
+zack,Physics,8.2,Should ask more questions.
+# HMAC: v1:sha256:853d5a10de676a49613029f1909723130476a0161c9d623857d74e0339e91403

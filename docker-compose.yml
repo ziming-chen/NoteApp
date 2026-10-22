@@ -25,6 +25,11 @@ services:
       POSTGRES_PASSWORD: notesapp_pg_pw_2024
       JWT_SECRET: s3cr3t
       SECRET_KEY: dev-session-key
+      NOTESAPP_COMMENT_KEY_FILE: /run/secrets/comment_key
+      NOTESAPP_EXPORT_HMAC_KEY_FILE: /run/secrets/export_hmac_key
+    secrets:
+      - comment_key
+      - export_hmac_key
     ports:
       - "8080:5000"
     depends_on:
@@ -38,3 +43,9 @@ services:
 
 volumes:
   pgdata:
+
+secrets:
+  comment_key:
+    file: ../.secrets/notesapp-comment.key
+  export_hmac_key:
+    file: ../.secrets/notesapp-export-hmac.key

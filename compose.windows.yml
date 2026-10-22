@@ -1,0 +1,9 @@
+# Local port bindings for the Windows course environment.
+# Keep the teaching application's original code, mounts and permissions.
+services:
+  db:
+    ports: !override
+      - "127.0.0.1:15432:5432"
+  web:
+    ports: !override
+      - "127.0.0.1:8080:5000"

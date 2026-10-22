@@ -1,0 +1,97 @@
+{
+  "checked_at": "2026-10-07T16:10:01.956Z",
+  "base_url": "http://127.0.0.1:8080",
+  "checks": [
+    {
+      "name": "student login and page",
+      "username": "alice",
+      "path": "/dashboard",
+      "status": 200
+    },
+    {
+      "name": "student own-grade API",
+      "path": "/api/notes/2",
+      "status": 200,
+      "student": "alice",
+      "class": "Computer Science",
+      "grade": 10.5,
+      "id": 2
+    },
+    {
+      "name": "student logout",
+      "final_path": "/login",
+      "status": 200
+    },
+    {
+      "name": "teacher login and page",
+      "username": "prof.turing",
+      "path": "/teacher",
+      "status": 200
+    },
+    {
+      "name": "teacher visible records",
+      "classes": 4,
+      "grades": 60,
+      "grade_form_present": true
+    },
+    {
+      "name": "teacher logout",
+      "final_path": "/login",
+      "status": 200
+    },
+    {
+      "name": "admin login and page",
+      "username": "admin",
+      "path": "/admin",
+      "status": 200
+    },
+    {
+      "name": "normal administrator ping",
+      "path": "/admin/ping",
+      "host": "127.0.0.1",
+      "status": 200,
+      "result": "0% packet loss"
+    },
+    {
+      "name": "administrator visible records",
+      "users": 35,
+      "classes": 4,
+      "user_forms_present": true
+    },
+    {
+      "name": "admin logout",
+      "final_path": "/login",
+      "status": 200
+    }
+  ],
+  "exports": [
+    {
+      "file": "computer-science.csv",
+      "username": "prof.knuth",
+      "class_id": 4,
+      "path": "/export.csv?class_id=4",
+      "status": 200
+    },
+    {
+      "file": "history.csv",
+      "username": "prof.lovelace",
+      "class_id": 2,
+      "path": "/export.csv?class_id=2",
+      "status": 200
+    },
+    {
+      "file": "mathematics.csv",
+      "username": "prof.turing",
+      "class_id": 1,
+      "path": "/export.csv?class_id=1",
+      "status": 200
+    },
+    {
+      "file": "physics.csv",
+      "username": "prof.hopper",
+      "class_id": 3,
+      "path": "/export.csv?class_id=3",
+      "status": 200
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+Caesar recovered shift: 7
+Caesar matches original: True
+ECB round trip: True
+GCM round trip: True
+GCM rejects modified ciphertext: True
+GCM rejects modified tag: True
+GCM rejects wrong nonce: True
+GCM rejects wrong key: True
+ECB unique/total blocks: 205/36864
+GCM unique/total blocks: 36864/36864

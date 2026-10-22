@@ -1,0 +1,23 @@
+{
+  "database_environment": "original Docker database",
+  "server_version": "15.19 (Debian 15.19-1.pgdg13+2)",
+  "request_transport": "HTTP at 127.0.0.1:8080",
+  "counts": {
+    "users": 35,
+    "classes": 4,
+    "enrollments": 60,
+    "notes": 60
+  },
+  "encrypted_comments": 60,
+  "migration_completion_marker_version": 1,
+  "all_original_comments_recovered_exactly": true,
+  "other_columns_and_tables_unchanged": true,
+  "teacher_and_student_pages_checked": true,
+  "authenticated_api_reads_checked": 60,
+  "full_csv_matches_original_data": true,
+  "four_class_exports_total_rows": 60,
+  "stored_notes_sha256": "1ad89edf37873c0abe92a3355b597ae05042c2f84c9de8ecda71b1fec761d2e7",
+  "checked_after_container_restart": false,
+  "ciphertexts_unchanged_after_restart": null,
+  "checked_at_utc": "2026-10-08T12:05:45.953214+00:00"
+}

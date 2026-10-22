@@ -1,0 +1,20 @@
+{
+  "database_environment": "original Docker database",
+  "server_version": "15.19 (Debian 15.19-1.pgdg13+2)",
+  "counts": {
+    "users": 35,
+    "classes": 4,
+    "enrollments": 60,
+    "notes": 60
+  },
+  "encrypted_comments_before": 0,
+  "original_table_sha256": {
+    "users": "cdcf9cb3b122af1c6daa9e670bf4f622d86d93e06fc387a480ad7d74ffb3f939",
+    "classes": "1846bb41cecf9d9c7f3cec913ac46c87e590b56ba8b2983a9a2f71e7da80887c",
+    "enrollments": "df59d53adb40db1d1df61645218b87652e344d0e4b83ff78be281785f81a98ac",
+    "notes": "170e2e5b2d4d0112771cec0bb1a3cd8006a501d0b88fc834203afe1e7b00f024"
+  },
+  "encrypted_backup": "session03-before-20261008T114720Z.sql.aesgcm",
+  "backup_decryption_verified": true,
+  "checked_at_utc": "2026-10-08T11:47:20.877495+00:00"
+}

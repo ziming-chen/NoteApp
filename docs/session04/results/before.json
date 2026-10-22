@@ -1,0 +1,25 @@
+{
+  "tables": {
+    "users": {
+      "rows": 35,
+      "sha256": "1b9c6a092b98e93d0246e3140b9e09183894d36430864fc2387c393eff053909"
+    },
+    "classes": {
+      "rows": 4,
+      "sha256": "1846bb41cecf9d9c7f3cec913ac46c87e590b56ba8b2983a9a2f71e7da80887c"
+    },
+    "enrollments": {
+      "rows": 60,
+      "sha256": "34797b07a8d7d649b71aacd188f2f86f9b2aee9db57a5afe62f3e228f35e6a69"
+    },
+    "notes": {
+      "rows": 60,
+      "sha256": "e08b426d3cd5fff648408ebabbcef0fb15871c41b4b40a691a1208afb3479a50"
+    },
+    "notesapp_crypto_state": {
+      "rows": 1,
+      "sha256": "d27fe237f833d3957a02feebf0ac0269f52eb3e89a37d7e19b98531d55f19467"
+    }
+  },
+  "checked_at_utc": "2026-10-21T08:37:17.069628+00:00"
+}

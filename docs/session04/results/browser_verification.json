@@ -1,0 +1,12 @@
+{
+  "browser": "headless Chromium via the installed Chrome/Edge executable",
+  "version": "156.0.8078.47",
+  "teacher_login": true,
+  "download_matches_http_export": true,
+  "original_upload_passes": true,
+  "changed_grade_upload_fails": true,
+  "mobile_form_has_no_horizontal_overflow": true,
+  "page_errors": [],
+  "database_unchanged": true,
+  "checked_at_utc": "2026-10-21T08:40:42.988785+00:00"
+}

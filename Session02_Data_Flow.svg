@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg
+  PUBLIC '-//W3C//DTD SVG 1.0//EN'
+  'http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd'>
+<svg width="1400" height="1000" preserveAspectRatio="xMinYMin meet" viewBox="0 0 1400 1000" xmlns="http://www.w3.org/2000/svg" version="1.0" fill-rule="evenodd" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<title>...</title>
+	<desc>...</desc>
+	<clipPath id="clip">
+		<rect x="0" y="0" width="1400" height="1000"/>
+	</clipPath>
+	<g id="group" transform="scale(1,-1) translate(0,-1000)" style="clip-path: url(#clip)">
+		<g transform="">
+			<rect x="0" y="0" width="1400" height="1000" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="45" y="952" style="font-family: Helvetica-Bold; font-size: 30px;fill: rgb(9%,17%,26%); stroke:none;" transform="translate(0,1904) scale(1,-1)">NotesApp: numbered data-flow diagram</text>
+			<text x="45" y="922" style="font-family: Helvetica; font-size: 16px;fill: rgb(32%,39%,46%); stroke:none;" transform="translate(0,1844) scale(1,-1)">Session 02  |  Docker Desktop on Windows  |  Source commit 1c83e42</text>
+			<text x="45" y="899" style="font-family: Helvetica; font-size: 14px;fill: rgb(32%,39%,46%); stroke:none;" transform="translate(0,1798) scale(1,-1)">01-19 identify the same flows in the register and STRIDE table.</text>
+			<text x="800" y="899" style="font-family: Helvetica; font-size: 13px;fill: rgb(46%,27%,64%); stroke:none;" transform="translate(0,1798) scale(1,-1)">TB1: browser / app   |   TB2: app / database</text>
+			<rect x="40" y="40" width="1320" height="535" rx="12" ry="12" style="stroke: rgb(80%,83%,87%); stroke-linecap: butt; stroke-width: 1.2; fill: rgb(98%,98%,99%); fill-rule: evenodd;"/>
+			<rect x="45" y="780" width="380" height="105" rx="9" ry="9" style="stroke: rgb(80%,83%,87%); stroke-linecap: butt; stroke-width: 1.4; fill: rgb(96%,97%,98%); fill-rule: evenodd;"/>
+			<text x="65" y="853" style="font-family: Helvetica-Bold; font-size: 21px;fill: rgb(9%,17%,26%); stroke:none;" transform="translate(0,1706) scale(1,-1)">Student browser</text>
+			<text x="65" y="826" style="font-family: Helvetica; font-size: 15px;fill: rgb(32%,39%,46%); stroke:none;" transform="translate(0,1652) scale(1,-1)">alice: grades, comments and grade API</text>
+			<rect x="510" y="780" width="380" height="105" rx="9" ry="9" style="stroke: rgb(80%,83%,87%); stroke-linecap: butt; stroke-width: 1.4; fill: rgb(96%,97%,98%); fill-rule: evenodd;"/>
+			<text x="530" y="853" style="font-family: Helvetica-Bold; font-size: 21px;fill: rgb(9%,17%,26%); stroke:none;" transform="translate(0,1706) scale(1,-1)">Teacher browser</text>
+			<text x="530" y="826" style="font-family: Helvetica; font-size: 15px;fill: rgb(32%,39%,46%); stroke:none;" transform="translate(0,1652) scale(1,-1)">prof.turing: classes, grades and exports</text>
+			<rect x="975" y="780" width="380" height="105" rx="9" ry="9" style="stroke: rgb(80%,83%,87%); stroke-linecap: butt; stroke-width: 1.4; fill: rgb(96%,97%,98%); fill-rule: evenodd;"/>
+			<text x="995" y="853" style="font-family: Helvetica-Bold; font-size: 21px;fill: rgb(9%,17%,26%); stroke:none;" transform="translate(0,1706) scale(1,-1)">Administrator browser</text>
+			<text x="995" y="826" style="font-family: Helvetica; font-size: 15px;fill: rgb(32%,39%,46%); stroke:none;" transform="translate(0,1652) scale(1,-1)">admin: users, classes and server test</text>
+			<rect x="150" y="410" width="1100" height="125" rx="9" ry="9" style="stroke: rgb(80%,83%,87%); stroke-linecap: butt; stroke-width: 1.4; fill: rgb(92%,96%,97%); fill-rule: evenodd;"/>
+			<text x="170" y="503" style="font-family: Helvetica-Bold; font-size: 21px;fill: rgb(9%,17%,26%); stroke:none;" transform="translate(0,1006) scale(1,-1)">Flask application - web container</text>
+			<text x="170" y="476" style="font-family: Helvetica; font-size: 15px;fill: rgb(32%,39%,46%); stroke:none;" transform="translate(0,952) scale(1,-1)">Authentication and session/JWT handling; page, API, export and form routes.</text>
+			<text x="170" y="453" style="font-family: Helvetica; font-size: 15px;fill: rgb(32%,39%,46%); stroke:none;" transform="translate(0,906) scale(1,-1)">Runs as root. /var/run/docker.sock and the project at /host are mounted read-write.</text>
+			<path d="M 30,585 L 1370,585 Z" style="stroke: rgb(46%,27%,64%); stroke-linecap: butt; stroke-width: 2.2; stroke-dasharray: 8, 6;"/>
+			<text x="30" y="596" style="font-family: Helvetica-Bold; font-size: 15px;fill: rgb(46%,27%,64%); stroke:none;" transform="translate(0,1192) scale(1,-1)">TB1</text>
+			<polyline points="80 780, 80 560, 205 560, 205 535" style="stroke: rgb(7%,43%,50%); stroke-linecap: butt; stroke-width: 2.4; fill: None; fill-rule: evenodd;"/>
+			<polygon points="205 535, 200 546, 210 546" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(7%,43%,50%); fill-rule: evenodd;"/>
+			<text x="96" y="741" style="font-family: Helvetica; font-size: 15px;fill: rgb(9%,17%,26%); stroke:none;" transform="translate(0,1482) scale(1,-1)">01  POST /login</text>
+			<text x="96" y="716" style="font-family: Helvetica; font-size: 15px;fill: rgb(9%,17%,26%); stroke:none;" transform="translate(0,1432) scale(1,-1)">02  GET /dashboard</text>
+			<text x="96" y="691" style="font-family: Helvetica; font-size: 15px;fill: rgb(9%,17%,26%); stroke:none;" transform="translate(0,1382) scale(1,-1)">03  GET /api/notes/{id}</text>
+			<polyline points="385 535, 385 780" style="stroke: rgb(7%,43%,50%); stroke-linecap: butt; stroke-width: 2.4; fill: None; fill-rule: evenodd;"/>
+			<polygon points="385 780, 390 769, 380 769" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(7%,43%,50%); fill-rule: evenodd;"/>
+			<text x="197" y="651" style="font-family: Helvetica; font-size: 15px;fill: rgb(9%,17%,26%); stroke:none;" transform="translate(0,1302) scale(1,-1)">04  Session cookie,</text>
+			<text x="197" y="626" style="font-family: Helvetica; font-size: 15px;fill: rgb(9%,17%,26%); stroke:none;" transform="translate(0,1252) scale(1,-1)">      HTML and JSON</text>
+			<polyline points="535 780, 535 535" style="stroke: rgb(7%,43%,50%); stroke-linecap: butt; stroke-width: 2.4; fill: None; fill-rule: evenodd;"/>
+			<polygon points="535 535, 530 546, 540 546" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(7%,43%,50%); fill-rule: evenodd;"/>
+			<text x="551" y="741" style="font-family: Helvetica; font-size: 15px;fill: rgb(9%,17%,26%); stroke:none;" transform="translate(0,1482) scale(1,-1)">05  POST /login</text>
+			<text x="551" y="716" style="font-family: Helvetica; font-size: 15px;fill: rgb(9%,17%,26%); stroke:none;" transform="translate(0,1432) scale(1,-1)">06  GET /teacher + CSV</text>
+			<text x="551" y="691" style="font-family: Helvetica; font-size: 15px;fill: rgb(9%,17%,26%); stroke:none;" transform="translate(0,1382) scale(1,-1)">07  POST /grades</text>
+			<polyline points="850 535, 850 780" style="stroke: rgb(7%,43%,50%); stroke-linecap: butt; stroke-width: 2.4; fill: None; fill-rule: evenodd;"/>
+			<polygon points="850 780, 855 769, 845 769" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(7%,43%,50%); fill-rule: evenodd;"/>
+			<text x="665" y="651" style="font-family: Helvetica; font-size: 15px;fill: rgb(9%,17%,26%); stroke:none;" transform="translate(0,1302) scale(1,-1)">08  Session cookie,</text>
+			<text x="665" y="626" style="font-family: Helvetica; font-size: 15px;fill: rgb(9%,17%,26%); stroke:none;" transform="translate(0,1252) scale(1,-1)">      HTML and CSV</text>
+			<polyline points="1000 780, 1000 535" style="stroke: rgb(7%,43%,50%); stroke-linecap: butt; stroke-width: 2.4; fill: None; fill-rule: evenodd;"/>
+			<polygon points="1000 535, 995 546, 1005 546" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(7%,43%,50%); fill-rule: evenodd;"/>
+			<text x="1016" y="741" style="font-family: Helvetica; font-size: 15px;fill: rgb(9%,17%,26%); stroke:none;" transform="translate(0,1482) scale(1,-1)">09  POST /login</text>
+			<text x="1016" y="716" style="font-family: Helvetica; font-size: 15px;fill: rgb(9%,17%,26%); stroke:none;" transform="translate(0,1432) scale(1,-1)">10  GET /admin</text>
+			<text x="1016" y="691" style="font-family: Helvetica; font-size: 15px;fill: rgb(9%,17%,26%); stroke:none;" transform="translate(0,1382) scale(1,-1)">11  POST /admin/users</text>
+			<text x="1016" y="666" style="font-family: Helvetica; font-size: 15px;fill: rgb(9%,17%,26%); stroke:none;" transform="translate(0,1332) scale(1,-1)">12  POST /admin/ping</text>
+			<polyline points="1220 535, 1315 560, 1315 780" style="stroke: rgb(7%,43%,50%); stroke-linecap: butt; stroke-width: 2.4; fill: None; fill-rule: evenodd;"/>
+			<polygon points="1315 780, 1320 769, 1310 769" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(7%,43%,50%); fill-rule: evenodd;"/>
+			<text x="1130" y="626" style="font-family: Helvetica; font-size: 15px;fill: rgb(9%,17%,26%); stroke:none;" transform="translate(0,1252) scale(1,-1)">13  Cookie, HTML</text>
+			<text x="1130" y="601" style="font-family: Helvetica; font-size: 15px;fill: rgb(9%,17%,26%); stroke:none;" transform="translate(0,1202) scale(1,-1)">      and ping output</text>
+			<rect x="60" y="60" width="380" height="178" rx="10" ry="10" style="stroke: rgb(46%,27%,64%); stroke-linecap: butt; stroke-width: 2.2; fill: none; fill-rule: evenodd; stroke-dasharray: 8, 6;"/>
+			<text x="65" y="248" style="font-family: Helvetica-Bold; font-size: 15px;fill: rgb(46%,27%,64%); stroke:none;" transform="translate(0,496) scale(1,-1)">TB2</text>
+			<rect x="75" y="80" width="350" height="140" rx="9" ry="9" style="stroke: rgb(80%,83%,87%); stroke-linecap: butt; stroke-width: 1.4; fill: rgb(96%,97%,98%); fill-rule: evenodd;"/>
+			<text x="95" y="188" style="font-family: Helvetica-Bold; font-size: 21px;fill: rgb(9%,17%,26%); stroke:none;" transform="translate(0,376) scale(1,-1)">PostgreSQL - db container</text>
+			<text x="95" y="161" style="font-family: Helvetica; font-size: 15px;fill: rgb(32%,39%,46%); stroke:none;" transform="translate(0,322) scale(1,-1)">users, classes, enrollments, notes</text>
+			<text x="95" y="138" style="font-family: Helvetica; font-size: 15px;fill: rgb(32%,39%,46%); stroke:none;" transform="translate(0,276) scale(1,-1)">Credentials, grades and comments</text>
+			<text x="95" y="115" style="font-family: Helvetica; font-size: 15px;fill: rgb(32%,39%,46%); stroke:none;" transform="translate(0,230) scale(1,-1)">Persistent volume: pgdata</text>
+			<rect x="535" y="80" width="350" height="140" rx="9" ry="9" style="stroke: rgb(80%,83%,87%); stroke-linecap: butt; stroke-width: 1.4; fill: rgb(96%,97%,98%); fill-rule: evenodd;"/>
+			<text x="555" y="188" style="font-family: Helvetica-Bold; font-size: 21px;fill: rgb(9%,17%,26%); stroke:none;" transform="translate(0,376) scale(1,-1)">OS shell / ping</text>
+			<text x="555" y="161" style="font-family: Helvetica; font-size: 15px;fill: rgb(32%,39%,46%); stroke:none;" transform="translate(0,322) scale(1,-1)">Inside the web container</text>
+			<text x="555" y="138" style="font-family: Helvetica; font-size: 15px;fill: rgb(32%,39%,46%); stroke:none;" transform="translate(0,276) scale(1,-1)">Command execution + stdout/stderr</text>
+			<text x="555" y="115" style="font-family: Helvetica; font-size: 15px;fill: rgb(32%,39%,46%); stroke:none;" transform="translate(0,230) scale(1,-1)">Loopback ping checked normally</text>
+			<rect x="995" y="80" width="300" height="140" rx="9" ry="9" style="stroke: rgb(80%,83%,87%); stroke-linecap: butt; stroke-width: 1.4; fill: rgb(96%,97%,98%); fill-rule: evenodd;"/>
+			<text x="1015" y="188" style="font-family: Helvetica-Bold; font-size: 21px;fill: rgb(9%,17%,26%); stroke:none;" transform="translate(0,376) scale(1,-1)">Local audit file</text>
+			<text x="1015" y="161" style="font-family: Helvetica; font-size: 15px;fill: rgb(32%,39%,46%); stroke:none;" transform="translate(0,322) scale(1,-1)">/var/log/notesapp/app.log</text>
+			<text x="1015" y="138" style="font-family: Helvetica; font-size: 15px;fill: rgb(32%,39%,46%); stroke:none;" transform="translate(0,276) scale(1,-1)">Login, grade-write and ping events</text>
+			<text x="1015" y="115" style="font-family: Helvetica; font-size: 15px;fill: rgb(32%,39%,46%); stroke:none;" transform="translate(0,230) scale(1,-1)">Inside the web container</text>
+			<polyline points="165 410, 165 220" style="stroke: rgb(7%,43%,50%); stroke-linecap: butt; stroke-width: 2.4; fill: None; fill-rule: evenodd;"/>
+			<polygon points="165 220, 160 231, 170 231" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(7%,43%,50%); fill-rule: evenodd;"/>
+			<text x="177" y="369" style="font-family: Helvetica; font-size: 15px;fill: rgb(9%,17%,26%); stroke:none;" transform="translate(0,738) scale(1,-1)">14  SELECT</text>
+			<text x="202" y="348" style="font-family: Helvetica; font-size: 15px;fill: rgb(9%,17%,26%); stroke:none;" transform="translate(0,696) scale(1,-1)">queries</text>
+			<polyline points="270 410, 270 220" style="stroke: rgb(7%,43%,50%); stroke-linecap: butt; stroke-width: 2.4; fill: None; fill-rule: evenodd;"/>
+			<polygon points="270 220, 265 231, 275 231" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(7%,43%,50%); fill-rule: evenodd;"/>
+			<text x="282" y="324" style="font-family: Helvetica; font-size: 15px;fill: rgb(9%,17%,26%); stroke:none;" transform="translate(0,648) scale(1,-1)">15  Write SQL</text>
+			<polyline points="410 220, 410 410" style="stroke: rgb(7%,43%,50%); stroke-linecap: butt; stroke-width: 2.4; fill: None; fill-rule: evenodd;"/>
+			<polygon points="410 410, 415 399, 405 399" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(7%,43%,50%); fill-rule: evenodd;"/>
+			<text x="280" y="279" style="font-family: Helvetica; font-size: 15px;fill: rgb(9%,17%,26%); stroke:none;" transform="translate(0,558) scale(1,-1)">16  Rows / results</text>
+			<polyline points="620 410, 620 220" style="stroke: rgb(46%,27%,64%); stroke-linecap: butt; stroke-width: 2.4; fill: None; fill-rule: evenodd;"/>
+			<polygon points="620 220, 615 231, 625 231" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(46%,27%,64%); fill-rule: evenodd;"/>
+			<text x="632" y="366" style="font-family: Helvetica; font-size: 15px;fill: rgb(46%,27%,64%); stroke:none;" transform="translate(0,732) scale(1,-1)">17  Shell command</text>
+			<polyline points="835 220, 835 410" style="stroke: rgb(46%,27%,64%); stroke-linecap: butt; stroke-width: 2.4; fill: None; fill-rule: evenodd;"/>
+			<polygon points="835 410, 840 399, 830 399" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(46%,27%,64%); fill-rule: evenodd;"/>
+			<text x="674" y="280" style="font-family: Helvetica; font-size: 15px;fill: rgb(46%,27%,64%); stroke:none;" transform="translate(0,560) scale(1,-1)">18  stdout / stderr</text>
+			<polyline points="1140 410, 1140 220" style="stroke: rgb(7%,43%,50%); stroke-linecap: butt; stroke-width: 2.4; fill: None; fill-rule: evenodd;"/>
+			<polygon points="1140 220, 1135 231, 1145 231" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(7%,43%,50%); fill-rule: evenodd;"/>
+			<text x="1152" y="331" style="font-family: Helvetica; font-size: 15px;fill: rgb(9%,17%,26%); stroke:none;" transform="translate(0,662) scale(1,-1)">19  Audit events</text>
+			<text x="45" y="25" style="font-family: Helvetica; font-size: 11px;fill: rgb(32%,39%,46%); stroke:none;" transform="translate(0,50) scale(1,-1)">Solid arrows = logical application flows. Requests sharing an HTTP channel are grouped by role.</text>
+			<text x="45" y="9" style="font-family: Helvetica; font-size: 10.5px;fill: rgb(32%,39%,46%); stroke:none;" transform="translate(0,18) scale(1,-1)">Write routes were mapped from forms and source. Docker mounts are deployment capabilities; no Docker API operation was attempted.</text>
+		</g>
+	</g>
+</svg>

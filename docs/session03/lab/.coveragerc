@@ -1,0 +1,8 @@
+[run]
+branch = True
+patch = subprocess
+relative_files = True
+omit =
+    .venv/*
+    tests/*
+    make_inputs.py

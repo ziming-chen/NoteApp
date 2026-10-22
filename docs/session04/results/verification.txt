@@ -1,0 +1,15 @@
+........................................................................ [ 96%]
+...                                                                      [100%]
+=============================== tests coverage ================================
+_______________ coverage: platform win32, python 3.12.3-final-0 _______________
+
+Name                       Stmts   Miss Branch BrPart  Cover   Missing
+----------------------------------------------------------------------
+web\comment_crypto.py         40      0     12      0   100%
+web\comment_migration.py      27      0     10      0   100%
+web\export_hmac.py            32      0      8      0   100%
+----------------------------------------------------------------------
+TOTAL                         99      0     30      0   100%
+Coverage JSON written to file ../Assignments/Session04/HMAC/results/coverage.json
+Required test coverage of 95% reached. Total coverage: 100.00%
+75 passed in 13.23s

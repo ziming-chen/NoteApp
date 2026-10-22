@@ -12,3 +12,12 @@ venv/
 # Local env overrides
 .env
 .env.local
+
+# Encryption material and local checks
+*.key
+.secrets/
+.coverage
+.coverage.*
+htmlcov/
+.pytest_cache/
+.ruff_cache/

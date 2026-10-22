@@ -1,0 +1,4 @@
+cryptography==46.0.7
+Pillow==12.2.0
+matplotlib==3.11.2
+numpy==2.4.4

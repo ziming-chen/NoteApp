@@ -1,0 +1,43 @@
+{
+  "width": 512,
+  "height": 384,
+  "mode": "RGB",
+  "pixel_bytes": 589824,
+  "aes_key_bits": 256,
+  "aes_block_bytes": 16,
+  "ecb_ciphertext_bytes": 589840,
+  "gcm_ciphertext_and_tag_bytes": 589840,
+  "gcm_nonce_bytes": 12,
+  "gcm_tag_bytes": 16,
+  "gcm_nonce_hex": "e7ff68bc94b9b67b18126a5d",
+  "original_sha256": "c5ba97722e67436939343f8da8548ad06cb97513526bbcf52eecca0dbff320f2",
+  "ecb_decrypted_sha256": "c5ba97722e67436939343f8da8548ad06cb97513526bbcf52eecca0dbff320f2",
+  "gcm_decrypted_sha256": "c5ba97722e67436939343f8da8548ad06cb97513526bbcf52eecca0dbff320f2",
+  "ecb_round_trip": true,
+  "gcm_round_trip": true,
+  "ecb_modified_content_decrypted_without_authentication": true,
+  "gcm_tampered_ciphertext_rejected": true,
+  "gcm_tampered_tag_rejected": true,
+  "gcm_wrong_nonce_rejected": true,
+  "gcm_wrong_key_rejected": true,
+  "original_blocks": {
+    "total": 36864,
+    "unique": 205,
+    "repeated_occurrences": 36659,
+    "repeated_fraction": 0.9944390190972222
+  },
+  "ecb_blocks": {
+    "total": 36864,
+    "unique": 205,
+    "repeated_occurrences": 36659,
+    "repeated_fraction": 0.9944390190972222
+  },
+  "gcm_blocks": {
+    "total": 36864,
+    "unique": 36864,
+    "repeated_occurrences": 0,
+    "repeated_fraction": 0.0
+  },
+  "key_storage": "Fresh independent keys per mode; memory only; not saved.",
+  "view_format": "Ciphertext bytes rendered as RGB with known image dimensions."
+}

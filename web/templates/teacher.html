@@ -2,6 +2,8 @@
 {% block content %}
 <div class="card">
   <h1>Classes</h1>
+  <p><a href="{{ url_for('export_csv') }}">Export all grades</a>
+    · <a href="{{ url_for('verify_export') }}">Verify an exported CSV</a></p>
   <ul class="classes">
     {% for c in classes %}
     <li>{{ c.name }}

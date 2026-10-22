@@ -3,22 +3,34 @@
 Deliberately insecure teaching app for the EPITA Computer Security course.
 Do not deploy this anywhere real.
 """
-import os
+import base64
 import csv
+import hashlib
+import hmac
 import io
 import json
-import hmac
-import time
-import base64
-import hashlib
+import os
+import secrets
 import subprocess
+import time
 
 import psycopg2
 import psycopg2.extras
 from flask import (
-    Flask, request, session, redirect, url_for,
-    render_template, Response, jsonify, abort,
+    Flask,
+    Response,
+    abort,
+    jsonify,
+    redirect,
+    render_template,
+    request,
+    session,
+    url_for,
 )
+
+from comment_crypto import CommentCipher, CommentCryptoError
+from comment_migration import migrate_comments
+from export_hmac import ExportAuthenticator, ExportIntegrityError
 
 # --- Configuration ------------------------------------------------------------
 # All configuration comes from the environment (set in docker-compose.yml).
@@ -31,6 +43,14 @@ SECRET_KEY = os.environ.get("SECRET_KEY", "dev-session-key")
 
 app = Flask(__name__)
 app.secret_key = SECRET_KEY
+MAX_VERIFY_UPLOAD = 8 * 1024 * 1024
+app.config["MAX_CONTENT_LENGTH"] = MAX_VERIFY_UPLOAD
+comment_cipher = CommentCipher.from_key_file(
+    os.environ.get("NOTESAPP_COMMENT_KEY_FILE", "/run/secrets/comment_key")
+)
+export_authenticator = ExportAuthenticator.from_key_file(
+    os.environ.get("NOTESAPP_EXPORT_HMAC_KEY_FILE", "/run/secrets/export_hmac_key")
+)
 
 LOG_FILE = os.environ.get("NOTESAPP_LOG", "/var/log/notesapp/app.log")
 
@@ -52,6 +72,29 @@ def get_db():
     )
     conn.autocommit = True
     return conn
+
+
+def initialize_comments():
+    """Migrate once at startup; subsequent runs authenticate the stored data."""
+    conn = get_db()
+    try:
+        result = migrate_comments(conn, comment_cipher)
+    finally:
+        conn.close()
+    log(f"comment migration migrated={result['migrated']} verified={result['verified']}")
+    return result
+
+
+def decrypt_notes(notes):
+    for note in notes:
+        note["comment"] = comment_cipher.decrypt(note["comment"], note["id"])
+    return notes
+
+
+@app.errorhandler(CommentCryptoError)
+def comment_authentication_error(error):
+    log("comment authentication failure")
+    return jsonify({"error": "Comment authentication failed; contact the administrator."}), 500
 
 
 # --- Minimal JWT (deliberately weak) ------------------------------------------
@@ -195,6 +238,7 @@ def dashboard():
     )
     notes = cur.fetchall()
     conn.close()
+    decrypt_notes(notes)
     return render_template("dashboard.html", notes=notes, token=session.get("token"))
 
 
@@ -218,6 +262,7 @@ def api_notes(note_id):
     conn.close()
     if not note:
         return jsonify({"error": "not found"}), 404
+    decrypt_notes([note])
     note["grade"] = float(note["grade"]) if note["grade"] is not None else None
     return jsonify(note)
 
@@ -241,6 +286,7 @@ def teacher():
     cur.execute("SELECT id, username FROM users WHERE role = 'student' ORDER BY username")
     students = cur.fetchall()
     conn.close()
+    decrypt_notes(notes)
     return render_template("teacher.html", classes=classes, notes=notes, students=students)
 
 
@@ -254,20 +300,36 @@ def grades():
     class_id = request.form.get("class_id")
     grade = request.form.get("grade")
     comment = request.form.get("comment", "")
-    conn = get_db()
-    cur = conn.cursor()
     if note_id:
-        cur.execute(
-            "UPDATE notes SET grade = %s, comment = %s WHERE id = %s",
-            (grade, comment, note_id),
-        )
-    else:
-        cur.execute(
-            "INSERT INTO notes (student_id, class_id, grade, comment) "
-            "VALUES (%s, %s, %s, %s)",
-            (student_id, class_id, grade, comment),
-        )
-    conn.close()
+        try:
+            note_id = int(note_id)
+            if note_id <= 0:
+                abort(400)
+        except ValueError:
+            abort(400)
+    conn = get_db()
+    conn.autocommit = False
+    try:
+        with conn:
+            with conn.cursor() as cur:
+                if note_id:
+                    cur.execute(
+                        "UPDATE notes SET grade = %s, comment = %s WHERE id = %s",
+                        (grade, comment_cipher.encrypt(comment, note_id), note_id),
+                    )
+                else:
+                    # Allocate the ID first so AAD binds the ciphertext to this row.
+                    # No plaintext comment is ever inserted, even temporarily.
+                    cur.execute("SELECT nextval(pg_get_serial_sequence('notes', 'id')) AS id")
+                    new_id = cur.fetchone()["id"]
+                    cur.execute(
+                        "INSERT INTO notes (id, student_id, class_id, grade, comment) "
+                        "VALUES (%s, %s, %s, %s, %s)",
+                        (new_id, student_id, class_id, grade,
+                         comment_cipher.encrypt(comment, new_id)),
+                    )
+    finally:
+        conn.close()
     log(f"grade write by {session.get('username')} note_id={note_id or 'new'}")
     return redirect(url_for("teacher"))
 
@@ -281,7 +343,7 @@ def export_csv():
     cur = conn.cursor()
     if class_id:
         cur.execute(
-            "SELECT u.username AS student, c.name AS class, n.grade, n.comment "
+            "SELECT n.id, u.username AS student, c.name AS class, n.grade, n.comment "
             "FROM notes n JOIN users u ON u.id = n.student_id "
             "JOIN classes c ON c.id = n.class_id WHERE n.class_id = %s "
             "ORDER BY u.username",
@@ -289,21 +351,70 @@ def export_csv():
         )
     else:
         cur.execute(
-            "SELECT u.username AS student, c.name AS class, n.grade, n.comment "
+            "SELECT n.id, u.username AS student, c.name AS class, n.grade, n.comment "
             "FROM notes n JOIN users u ON u.id = n.student_id "
             "JOIN classes c ON c.id = n.class_id ORDER BY c.name, u.username"
         )
     rows = cur.fetchall()
     conn.close()
-    buf = io.StringIO()
+    decrypt_notes(rows)
+    buf = io.StringIO(newline="")
     writer = csv.writer(buf)
     writer.writerow(["student", "class", "grade", "comment"])
     for r in rows:
         writer.writerow([r["student"], r["class"], r["grade"], r["comment"]])
     return Response(
-        buf.getvalue(), mimetype="text/csv",
+        export_authenticator.sign(buf.getvalue().encode("utf-8")), mimetype="text/csv",
         headers={"Content-Disposition": "attachment; filename=grades.csv"},
     )
+
+
+@app.route("/verify-export", methods=["GET", "POST"])
+def verify_export():
+    if not login_required("teacher"):
+        return redirect(url_for("login"))
+    if "export_verify_csrf" not in session:
+        session["export_verify_csrf"] = secrets.token_urlsafe(32)
+    error = None
+    verified = False
+    status = 200
+    if request.method == "POST":
+        expected = session["export_verify_csrf"].encode("utf-8")
+        supplied = request.form.get("csrf_token", "").encode("utf-8")
+        if not hmac.compare_digest(expected, supplied):
+            abort(400)
+        upload = request.files.get("file")
+        if upload is None or not upload.filename:
+            error = "Choose an exported CSV file."
+            status = 400
+        else:
+            content = upload.read(MAX_VERIFY_UPLOAD + 1)
+            if len(content) > MAX_VERIFY_UPLOAD:
+                abort(413)
+            try:
+                export_authenticator.verify(content)
+                verified = True
+            except ExportIntegrityError:
+                error = (
+                    "Verification failed. The file is unsigned, has changed, "
+                    "or was authenticated with a different key."
+                )
+                status = 400
+    return render_template(
+        "verify_export.html", error=error, verified=verified,
+        csrf_token=session["export_verify_csrf"],
+    ), status
+
+
+@app.errorhandler(413)
+def upload_too_large(error):
+    if request.endpoint == "verify_export":
+        return render_template(
+            "verify_export.html", verified=False,
+            error="The upload is too large. Maximum request size: 8 MiB.",
+            csrf_token=session.get("export_verify_csrf", ""),
+        ), 413
+    return error
 
 
 @app.route("/admin")
@@ -390,5 +501,6 @@ def healthz():
 
 
 if __name__ == "__main__":
+    initialize_comments()
     # Plain HTTP on purpose (flaw #3). Nginx + TLS is added in a later lab.
     app.run(host="0.0.0.0", port=5000, debug=True)

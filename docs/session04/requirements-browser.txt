@@ -1,0 +1,2 @@
+# Optional browser verification only; not needed by the NotesApp web service.
+playwright==1.64.0

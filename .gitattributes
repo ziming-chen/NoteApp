@@ -1,0 +1,2 @@
+# Preserve the exact signed CSV bytes when cloning on Windows or Linux.
+docs/session04/results/*.csv -text whitespace=cr-at-eol
