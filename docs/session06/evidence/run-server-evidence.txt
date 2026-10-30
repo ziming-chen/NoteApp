@@ -1,0 +1,19 @@
+﻿# Server-side log for the 2026-10-29 run (Docker timestamps are UTC; local time is UTC+1)
+
+## Flask application log (noteapp-web-1)
+
+```text
+2026-10-29T13:34:00.166749439Z 172.18.0.4 - - [29/Oct/2026 13:34:00] "GET /api/notes/3 HTTP/1.0" 200 -
+2026-10-29T13:34:20.292499915Z 172.18.0.4 - - [29/Oct/2026 13:34:20] "[31m[1mGET /api/notes/3 HTTP/1.0[0m" 401 -
+2026-10-29T13:34:30.959509451Z 172.18.0.4 - - [29/Oct/2026 13:34:30] "GET /api/notes/3 HTTP/1.0" 200 -
+```
+
+## nginx access log (noteapp-nginx-1)
+
+```text
+2026-10-29T13:34:00.166939461Z 172.18.0.1 - - [29/Oct/2026:13:34:00 +0000] "GET /api/notes/3 HTTP/1.1" 200 158 "-" "curl/8.21.0" "-"
+2026-10-29T13:34:20.292738529Z 172.18.0.1 - - [29/Oct/2026:13:34:20 +0000] "GET /api/notes/3 HTTP/1.1" 401 30 "-" "curl/8.21.0" "-"
+2026-10-29T13:34:30.960426138Z 172.18.0.1 - - [29/Oct/2026:13:34:30 +0000] "GET /api/notes/3 HTTP/1.1" 200 158 "-" "curl/8.21.0" "-"
+```
+
+Status 200 with Content-Length 158 matches part1-body.json and part2-body.json.

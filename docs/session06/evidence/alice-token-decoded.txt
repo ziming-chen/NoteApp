@@ -1,0 +1,2 @@
+﻿HEADER : {"alg": "HS256", "typ": "JWT"}
+PAYLOAD: {"user_id": 6, "username": "alice", "role": "student"}

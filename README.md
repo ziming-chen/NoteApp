@@ -13,6 +13,7 @@
 | Session 04 homework: export integrity | [HMAC-SHA-256 CSV export and upload verification](docs/session04/README.md) |
 | Session 05 Lab 1: HTTPS traffic audit | [Combined report, plaintext/TLS captures and certificate comparison](docs/session05/README.md#lab-1---traffic-in-transit) |
 | Session 05 Lab 2: password storage audit | [MD5 experiment, Argon2id migration and measured cost](docs/session05/README.md#lab-2---password-storage) |
+| Session 06: forged JWT exercise | [Finding, JWT forgery results and evidence](docs/session06/README.md) |
 
 **Session 05 pair:** 陈子明 Chen Ziming (CHU ID 2023905333) and 吴彦澜 Wu Yanlan (CHU ID 2023905420).
 

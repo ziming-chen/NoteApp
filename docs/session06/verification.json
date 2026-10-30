@@ -1,0 +1,185 @@
+{
+  "verified_at_utc": "2026-10-29T13:35:27Z",
+  "passed": 15,
+  "total": 15,
+  "checks": [
+    {
+      "check": "part1 token ends with empty signature",
+      "ok": true,
+      "detail": "signature slot is empty"
+    },
+    {
+      "check": "part1 header alg",
+      "ok": true,
+      "detail": {
+        "alg": "none",
+        "typ": "JWT"
+      }
+    },
+    {
+      "check": "part1 payload role",
+      "ok": true,
+      "detail": {
+        "user_id": 9999,
+        "username": "attacker",
+        "role": "teacher"
+      }
+    },
+    {
+      "check": "part2 header alg",
+      "ok": true,
+      "detail": {
+        "alg": "HS256",
+        "typ": "JWT"
+      }
+    },
+    {
+      "check": "part2 payload role",
+      "ok": true,
+      "detail": {
+        "user_id": 9999,
+        "username": "attacker",
+        "role": "teacher"
+      }
+    },
+    {
+      "check": "part2 signature verifies with cracked secret",
+      "ok": true,
+      "detail": "secret=s3cr3t"
+    },
+    {
+      "check": "alice token signature matches cracked secret",
+      "ok": true,
+      "detail": "crack is reproducible"
+    },
+    {
+      "check": "part1 status 200",
+      "ok": true,
+      "detail": "HTTP/1.1 200 OK"
+    },
+    {
+      "check": "part2 status 200",
+      "ok": true,
+      "detail": "HTTP/1.1 200 OK"
+    },
+    {
+      "check": "part1 and part2 return the same record",
+      "ok": true,
+      "detail": {
+        "class_id": 1,
+        "class_name": "Mathematics",
+        "comment": "Solid work, keep it up.",
+        "grade": 12.6,
+        "id": 3,
+        "student": "bob",
+        "student_id": 7
+      }
+    },
+    {
+      "check": "record is bob's note",
+      "ok": true,
+      "detail": {
+        "class_id": 1,
+        "class_name": "Mathematics",
+        "comment": "Solid work, keep it up.",
+        "grade": 12.6,
+        "id": 3,
+        "student": "bob",
+        "student_id": 7
+      }
+    },
+    {
+      "check": "grade read",
+      "ok": true,
+      "detail": 12.6
+    },
+    {
+      "check": "secret found",
+      "ok": true,
+      "detail": {
+        "secret": "s3cr3t",
+        "candidates_tried": 8,
+        "candidates_total": 15,
+        "elapsed_seconds": 5.3e-05,
+        "candidates_per_second": 149532.7,
+        "alice_header": {
+          "alg": "HS256",
+          "typ": "JWT"
+        },
+        "alice_payload": {
+          "user_id": 6,
+          "username": "alice",
+          "role": "student"
+        }
+      }
+    },
+    {
+      "check": "candidates tried",
+      "ok": true,
+      "detail": 8
+    },
+    {
+      "check": "crack time recorded",
+      "ok": true,
+      "detail": 5.3e-05
+    }
+  ],
+  "evidence_sha256": {
+    "alice-token-decoded.txt": {
+      "bytes": 109,
+      "sha256": "d3841946e6c659c3b5d9799255458775ae022073e3aa1c07d9cf029afe0f9a71"
+    },
+    "alice-token.txt": {
+      "bytes": 157,
+      "sha256": "9d605777a10aa9e40f66eb039bcaff654961f2f5ead1f4d9c81cdc5b964b1567"
+    },
+    "compose-up.txt": {
+      "bytes": 498,
+      "sha256": "175247f8e46b749355e457a25fb7276e58f25c350e721ec75839d21902a036cb"
+    },
+    "crack-result.json": {
+      "bytes": 312,
+      "sha256": "aa9e75838b80e05e953fbc2d2bcf7ea4d938e3611a2628873d84abed96b1132a"
+    },
+    "forged-token.txt": {
+      "bytes": 111,
+      "sha256": "6f05c6cd4412b67250218036abca02b5f1d306f4f4477faec6876ad26a54de1f"
+    },
+    "jwt-secrets.txt": {
+      "bytes": 114,
+      "sha256": "1893f65d4cdbbc833f3e0a778be0462b959cb7961f8917cd6ce00a0c18738612"
+    },
+    "part1-body.json": {
+      "bytes": 158,
+      "sha256": "1f963ed8f1b79a0f041d41b1cd7466f1f2eea7e1a933e5539b60ef9093442c03"
+    },
+    "part1-headers.txt": {
+      "bytes": 155,
+      "sha256": "f77e19a275aeebef5266dda6883a9023ce9cb617897163f2e0e26b130ad9d3d8"
+    },
+    "part2-body.json": {
+      "bytes": 158,
+      "sha256": "1f963ed8f1b79a0f041d41b1cd7466f1f2eea7e1a933e5539b60ef9093442c03"
+    },
+    "part2-headers.txt": {
+      "bytes": 155,
+      "sha256": "a1c290cfc9743382a0b0c70d2ec5c57823cc198062e1e687ec537cba266ab245"
+    },
+    "previous-attempt-20261027.txt": {
+      "bytes": 652,
+      "sha256": "43eedc74d3cf78001b282aa08839ac9cf71661c78d7f90af3a7fa826e1ab87f0"
+    },
+    "run-server-evidence.txt": {
+      "bytes": 1020,
+      "sha256": "92274087145416e23975d4efa75c495be579a9647e7080671f4c224070df1440"
+    },
+    "run.log": {
+      "bytes": 6457,
+      "sha256": "124e71c544b43b304f88d6540b3de28d3aaa79f45672dc5542a0f73e14c711af"
+    },
+    "signed-token.txt": {
+      "bytes": 157,
+      "sha256": "94191e524d5a3a8d315201daa41644a3be726aa46165ebc24ff344ef5ba2ad2a"
+    }
+  }
+}

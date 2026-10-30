@@ -1,0 +1,16 @@
+{
+  "secret": "s3cr3t",
+  "candidates_tried": 8,
+  "candidates_total": 15,
+  "elapsed_seconds": 5.3e-05,
+  "candidates_per_second": 149532.7,
+  "alice_header": {
+    "alg": "HS256",
+    "typ": "JWT"
+  },
+  "alice_payload": {
+    "user_id": 6,
+    "username": "alice",
+    "role": "student"
+  }
+}
