@@ -1,0 +1,41 @@
+diff --git a/tests/test_seeded_homework.py b/tests/test_seeded_homework.py
+index 3b2dc3a..a453602 100644
+--- a/tests/test_seeded_homework.py
++++ b/tests/test_seeded_homework.py
+@@ -74,6 +74,11 @@ def test_complete_seed_migration_reads_exports_and_reload(
+     client.get("/logout")
+     assert client.post("/login", data=student).status_code == 302
+     assert client.get("/dashboard").status_code == 200
++    assert client.get("/api/notes/1").json["student"] == student["username"]
++    cross_student = client.get("/api/notes/3")
++    missing = client.get("/api/notes/99999")
++    assert cross_student.status_code == missing.status_code == 404
++    assert cross_student.json == missing.json == {"error": "not found"}
+ 
+     reloaded_cipher = CommentCipher.from_key_file(
+         os.environ["NOTESAPP_COMMENT_KEY_FILE"]
+diff --git a/web/app.py b/web/app.py
+index c3c0f11..724da83 100644
+--- a/web/app.py
++++ b/web/app.py
+@@ -258,8 +258,6 @@ def api_notes(note_id):
+         return jsonify({"error": "unauthorized"}), 401
+     conn = get_db()
+     cur = conn.cursor()
+-    # Flaw #7 (IDOR): the owner of the note is never checked. Any authenticated
+-    # caller can read any note id.
+     cur.execute(
+         "SELECT n.id, n.student_id, n.class_id, n.grade, n.comment, "
+         "u.username AS student, c.name AS class_name "
+@@ -271,6 +269,11 @@ def api_notes(note_id):
+     conn.close()
+     if not note:
+         return jsonify({"error": "not found"}), 404
++    if (
++        note["student_id"] != ident.get("user_id")
++        and ident.get("role") not in ("teacher", "admin")
++    ):
++        return jsonify({"error": "not found"}), 404
+     decrypt_notes([note])
+     note["grade"] = float(note["grade"]) if note["grade"] is not None else None
+     return jsonify(note)

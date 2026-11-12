@@ -1,0 +1,236 @@
+{
+  "checked_at_utc": "2026-11-12T08:44:32.081517+00:00",
+  "base_url": "http://127.0.0.1:8080",
+  "stage": "after",
+  "logins": [
+    {
+      "username": "alice",
+      "landing_page": "/dashboard",
+      "status": 200
+    },
+    {
+      "username": "bob",
+      "landing_page": "/dashboard",
+      "status": 200
+    },
+    {
+      "username": "prof.turing",
+      "landing_page": "/teacher",
+      "status": 200
+    },
+    {
+      "username": "admin",
+      "landing_page": "/admin",
+      "status": 200
+    }
+  ],
+  "requests": [
+    {
+      "caller": "alice",
+      "credential": "cookie",
+      "path": "/api/notes/1",
+      "status": 200,
+      "body": {
+        "class_id": 1,
+        "class_name": "Mathematics",
+        "comment": "Late submission, but good quality.",
+        "grade": 16.2,
+        "id": 1,
+        "student": "alice",
+        "student_id": 6
+      }
+    },
+    {
+      "caller": "alice",
+      "credential": "cookie",
+      "path": "/api/notes/2",
+      "status": 200,
+      "body": {
+        "class_id": 4,
+        "class_name": "Computer Science",
+        "comment": "Needs to review chapter 3.",
+        "grade": 10.5,
+        "id": 2,
+        "student": "alice",
+        "student_id": 6
+      }
+    },
+    {
+      "caller": "alice",
+      "credential": "cookie",
+      "path": "/api/notes/3",
+      "status": 404,
+      "body": {
+        "error": "not found"
+      }
+    },
+    {
+      "caller": "alice",
+      "credential": "cookie",
+      "path": "/api/notes/4",
+      "status": 404,
+      "body": {
+        "error": "not found"
+      }
+    },
+    {
+      "caller": "alice",
+      "credential": "cookie",
+      "path": "/api/notes/5",
+      "status": 404,
+      "body": {
+        "error": "not found"
+      }
+    },
+    {
+      "caller": "alice",
+      "credential": "cookie",
+      "path": "/api/notes/6",
+      "status": 404,
+      "body": {
+        "error": "not found"
+      }
+    },
+    {
+      "caller": "alice",
+      "credential": "cookie",
+      "path": "/api/notes/7",
+      "status": 404,
+      "body": {
+        "error": "not found"
+      }
+    },
+    {
+      "caller": "alice",
+      "credential": "cookie",
+      "path": "/api/notes/8",
+      "status": 404,
+      "body": {
+        "error": "not found"
+      }
+    },
+    {
+      "caller": "alice",
+      "credential": "cookie",
+      "path": "/api/notes/9",
+      "status": 404,
+      "body": {
+        "error": "not found"
+      }
+    },
+    {
+      "caller": "alice",
+      "credential": "cookie",
+      "path": "/api/notes/10",
+      "status": 404,
+      "body": {
+        "error": "not found"
+      }
+    },
+    {
+      "caller": "alice",
+      "credential": "bearer",
+      "path": "/api/notes/1",
+      "status": 200,
+      "body": {
+        "class_id": 1,
+        "class_name": "Mathematics",
+        "comment": "Late submission, but good quality.",
+        "grade": 16.2,
+        "id": 1,
+        "student": "alice",
+        "student_id": 6
+      }
+    },
+    {
+      "caller": "alice",
+      "credential": "bearer",
+      "path": "/api/notes/3",
+      "status": 404,
+      "body": {
+        "error": "not found"
+      }
+    },
+    {
+      "caller": "alice",
+      "credential": "cookie",
+      "path": "/api/notes/99999",
+      "status": 404,
+      "body": {
+        "error": "not found"
+      }
+    },
+    {
+      "caller": "anonymous",
+      "credential": "none",
+      "path": "/api/notes/3",
+      "status": 401,
+      "body": {
+        "error": "unauthorized"
+      }
+    },
+    {
+      "caller": "alice",
+      "credential": "invalid bearer + cookie",
+      "path": "/api/notes/3",
+      "status": 401,
+      "body": {
+        "error": "unauthorized"
+      }
+    },
+    {
+      "caller": "bob",
+      "credential": "cookie",
+      "path": "/api/notes/3",
+      "status": 200,
+      "body": {
+        "class_id": 1,
+        "class_name": "Mathematics",
+        "comment": "Solid work, keep it up.",
+        "grade": 12.6,
+        "id": 3,
+        "student": "bob",
+        "student_id": 7
+      }
+    },
+    {
+      "caller": "bob",
+      "credential": "cookie",
+      "path": "/api/notes/1",
+      "status": 404,
+      "body": {
+        "error": "not found"
+      }
+    },
+    {
+      "caller": "prof.turing",
+      "credential": "cookie",
+      "path": "/api/notes/3",
+      "status": 200,
+      "body": {
+        "class_id": 1,
+        "class_name": "Mathematics",
+        "comment": "Solid work, keep it up.",
+        "grade": 12.6,
+        "id": 3,
+        "student": "bob",
+        "student_id": 7
+      }
+    },
+    {
+      "caller": "admin",
+      "credential": "cookie",
+      "path": "/api/notes/3",
+      "status": 200,
+      "body": {
+        "class_id": 1,
+        "class_name": "Mathematics",
+        "comment": "Solid work, keep it up.",
+        "grade": 12.6,
+        "id": 3,
+        "student": "bob",
+        "student_id": 7
+      }
+    }
+  ]
+}

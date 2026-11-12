@@ -258,8 +258,6 @@ def api_notes(note_id):
         return jsonify({"error": "unauthorized"}), 401
     conn = get_db()
     cur = conn.cursor()
-    # Flaw #7 (IDOR): the owner of the note is never checked. Any authenticated
-    # caller can read any note id.
     cur.execute(
         "SELECT n.id, n.student_id, n.class_id, n.grade, n.comment, "
         "u.username AS student, c.name AS class_name "
@@ -270,6 +268,11 @@ def api_notes(note_id):
     note = cur.fetchone()
     conn.close()
     if not note:
+        return jsonify({"error": "not found"}), 404
+    if (
+        note["student_id"] != ident.get("user_id")
+        and ident.get("role") not in ("teacher", "admin")
+    ):
         return jsonify({"error": "not found"}), 404
     decrypt_notes([note])
     note["grade"] = float(note["grade"]) if note["grade"] is not None else None

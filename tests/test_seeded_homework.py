@@ -74,6 +74,11 @@ def test_complete_seed_migration_reads_exports_and_reload(
     client.get("/logout")
     assert client.post("/login", data=student).status_code == 302
     assert client.get("/dashboard").status_code == 200
+    assert client.get("/api/notes/1").json["student"] == student["username"]
+    cross_student = client.get("/api/notes/3")
+    missing = client.get("/api/notes/99999")
+    assert cross_student.status_code == missing.status_code == 404
+    assert cross_student.json == missing.json == {"error": "not found"}
 
     reloaded_cipher = CommentCipher.from_key_file(
         os.environ["NOTESAPP_COMMENT_KEY_FILE"]
