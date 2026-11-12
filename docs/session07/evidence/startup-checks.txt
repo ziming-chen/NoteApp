@@ -1,0 +1,3 @@
+Missing JWT_SECRET: exit 1, KeyError: 'JWT_SECRET'
+Old 6-character JWT_SECRET: exit 1, RuntimeError: JWT_SECRET must be at least 32 bytes
+Running stack: JWT_SECRET is set (43 characters)

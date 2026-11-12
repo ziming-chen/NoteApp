@@ -1,0 +1,6 @@
+LOGIN FIX — NotesApp flaw #4 (auth)
+  Fix 1: verify_jwt requires HS256 and verifies the HMAC before returning claims.
+  Fix 2: JWT_SECRET is generated from 32 random bytes and required in the environment.
+  Proof: alg:none teacher token     -> HTTP 401 {"error":"unauthorized"}
+         s3cr3t-signed teacher JWT  -> HTTP 401 {"error":"unauthorized"}
+         real Alice login           -> HTTP 200 dashboard and HTTP 200 for her own note with the new JWT

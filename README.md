@@ -14,16 +14,19 @@
 | Session 05 Lab 1: HTTPS traffic audit | [Combined report, plaintext/TLS captures and certificate comparison](docs/session05/README.md#lab-1---traffic-in-transit) |
 | Session 05 Lab 2: password storage audit | [MD5 experiment, Argon2id migration and measured cost](docs/session05/README.md#lab-2---password-storage) |
 | Session 06: forged JWT exercise | [Finding, JWT forgery results and evidence](docs/session06/README.md) |
+| Session 07: fix the login | [HS256 verifier, key rotation and audit](docs/session07/README.md) |
 
 **Session 05 pair:** 陈子明 Chen Ziming (CHU ID 2023905333) and 吴彦澜 Wu Yanlan (CHU ID 2023905420).
 
-The active application includes comment encryption, authenticated CSV exports and Argon2id upgrade-on-login. The optional HTTPS overlay puts nginx in front of Flask and removes the direct web port. Follow the [Session 05 run instructions](docs/session05/README.md#run-the-submitted-application) for the HTTPS setup and local certificate generation. The existing Windows launcher uses plain HTTP; use the three-file Compose command for HTTPS. Run the regression suite from the repository root after installing `requirements-dev.txt`, with the local lab PostgreSQL service available on port 15432:
+The active application includes comment encryption, authenticated CSV exports, Argon2id upgrade-on-login and HS256 JWT verification. Set the required JWT signing key before starting the stack. [Session 07 key setup](docs/session07/README.md#reproduce)
+
+The optional HTTPS overlay puts nginx in front of Flask and removes the direct web port. The Windows launcher uses plain HTTP. Run the regression suite from the repository root after installing `requirements-dev.txt`, with the local lab PostgreSQL service available on port 15432. [Session 05 HTTPS setup and certificate generation](docs/session05/README.md#run-the-submitted-application)
 
 ```powershell
 python -m pytest -q --cov=export_hmac --cov=comment_crypto --cov=comment_migration --cov=password_storage --cov-branch --cov-report=term-missing --cov-fail-under=95
 ```
 
-The earlier Session 02-04 verification recorded 75 application tests and 52 standalone lab tests; its [record](docs/coursework-verification-20261022.json) is retained. Session 05 adds 15 password checks, bringing the application suite to 90 checks. Integration tests use disposable databases. [Session 05 verification](docs/session05/submission-verification.json) records the current test and coverage results. The application remains a deliberately vulnerable course target: legacy accounts migrate only after a correct login, and other teaching flaws remain outside these changes.
+The application suite has 98 passing checks after Class 7. Integration tests use disposable databases. The application remains a deliberately vulnerable course target. [Session 07 test output](docs/session07/evidence/pytest.txt)
 
 ## Session 02 Threat Model
 
@@ -136,7 +139,7 @@ These are possible threats based on the pages, source and deployment. They have 
 
 [Download the same STRIDE table as CSV](docs/session02/STRIDE.csv).
 
-## Source and deployment findings
+## Session 02 source and deployment findings
 
 | Finding | Evidence | Relevant flows |
 | --- | --- | --- |
@@ -173,7 +176,7 @@ This session followed the observation task. Checks used normal logins, page read
 
 Run these commands from the checked-out repository directory.
 
-Start Docker Desktop, then double-click `Start-NoteApp.cmd` in this folder. The launcher runs the same Compose project used for the observations and opens <http://localhost:8080>. `Stop-NoteApp.cmd` stops the containers and keeps their database volume.
+Set up `JWT_SECRET` once before starting NotesApp. Then start Docker Desktop and double-click `Start-NoteApp.cmd` in this folder. The launcher opens <http://localhost:8080>. `Stop-NoteApp.cmd` stops the containers and keeps their database volume. [Session 07 key setup](docs/session07/README.md#reproduce)
 
 From PowerShell in the repository folder:
 

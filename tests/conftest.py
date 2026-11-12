@@ -2,6 +2,7 @@
 
 import importlib
 import os
+import secrets
 import uuid
 from contextlib import closing
 
@@ -70,11 +71,14 @@ def web_app(database, tmp_path, monkeypatch):
     export_key_file = tmp_path / "export.key"
     export_key_file.write_bytes(os.urandom(32))
     monkeypatch.setenv("NOTESAPP_EXPORT_HMAC_KEY_FILE", str(export_key_file))
+    jwt_secret = secrets.token_urlsafe(32)
+    monkeypatch.setenv("JWT_SECRET", jwt_secret)
     module = importlib.import_module("app")
     from comment_crypto import CommentCipher
     from export_hmac import ExportAuthenticator
 
     cipher = CommentCipher.from_key_file(key_file)
+    monkeypatch.setattr(module, "JWT_SECRET", jwt_secret)
     monkeypatch.setattr(module, "comment_cipher", cipher)
     monkeypatch.setattr(
         module, "export_authenticator", ExportAuthenticator.from_key_file(export_key_file)

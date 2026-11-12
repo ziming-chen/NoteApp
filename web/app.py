@@ -39,7 +39,9 @@ DB_HOST = os.environ.get("DB_HOST", "db")
 DB_NAME = os.environ.get("DB_NAME", "notesapp")
 DB_USER = os.environ.get("DB_USER", "notesapp")
 DB_PASSWORD = os.environ.get("POSTGRES_PASSWORD", "notesapp_pg_pw_2024")
-JWT_SECRET = os.environ.get("JWT_SECRET", "s3cr3t")
+JWT_SECRET = os.environ["JWT_SECRET"]
+if len(JWT_SECRET.encode()) < 32:
+    raise RuntimeError("JWT_SECRET must be at least 32 bytes")
 SECRET_KEY = os.environ.get("SECRET_KEY", "dev-session-key")
 
 app = Flask(__name__)
@@ -98,7 +100,7 @@ def comment_authentication_error(error):
     return jsonify({"error": "Comment authentication failed; contact the administrator."}), 500
 
 
-# --- Minimal JWT (deliberately weak) ------------------------------------------
+# --- Minimal JWT --------------------------------------------------------------
 def _b64url(data: bytes) -> str:
     return base64.urlsafe_b64encode(data).rstrip(b"=").decode()
 
@@ -117,42 +119,35 @@ def make_jwt(payload: dict) -> str:
     return f"{h}.{p}.{_b64url(sig)}"
 
 
-def verify_jwt(token: str):
-    """Decode a JWT. Accepts alg:none (no signature) and HS256 with a short key.
-
-    This is intentionally broken (flaw #4): an attacker can forge any identity
-    by setting "alg":"none", and the HS256 key is trivially guessable.
-    """
+def verify_jwt(token: str) -> dict | None:
+    """Return the claims of a JWT authenticated with the server's HS256 key."""
     try:
         h_b64, p_b64, sig_b64 = token.split(".")
-    except ValueError:
-        return None
-    try:
         header = json.loads(_b64url_decode(h_b64))
-        payload = json.loads(_b64url_decode(p_b64))
-    except Exception:
+        signing_input = f"{h_b64}.{p_b64}".encode("ascii")
+        signature = sig_b64.encode("ascii")
+    except (ValueError, RecursionError):
         return None
 
-    alg = header.get("alg", "").lower()
-    if alg == "none":
-        # No signature verification at all.
-        return payload
-    if alg == "hs256":
-        signing_input = f"{h_b64}.{p_b64}".encode()
-        expected = _b64url(hmac.new(JWT_SECRET.encode(), signing_input, hashlib.sha256).digest())
-        if hmac.compare_digest(expected, sig_b64):
-            return payload
+    if not isinstance(header, dict) or header.get("alg") != "HS256":
         return None
-    return None
+    digest = hmac.new(JWT_SECRET.encode(), signing_input, hashlib.sha256).digest()
+    expected = _b64url(digest).encode("ascii")
+    if not hmac.compare_digest(expected, signature):
+        return None
+
+    try:
+        payload = json.loads(_b64url_decode(p_b64))
+    except (ValueError, RecursionError):
+        return None
+    return payload if isinstance(payload, dict) else None
 
 
 def current_identity():
-    """Return the acting identity from a Bearer JWT if present, else the session."""
-    auth = request.headers.get("Authorization", "")
-    if auth.startswith("Bearer "):
-        payload = verify_jwt(auth[7:].strip())
-        if payload:
-            return payload
+    """Authenticate a supplied Bearer credential or use the cookie session."""
+    scheme, _, token = request.headers.get("Authorization", "").partition(" ")
+    if scheme.lower() == "bearer":
+        return verify_jwt(token.strip())
     if "user_id" in session:
         return {"user_id": session["user_id"], "username": session.get("username"),
                 "role": session.get("role")}
@@ -220,7 +215,7 @@ def login():
             session["user_id"] = row["id"]
             session["username"] = row["username"]
             session["role"] = row["role"]
-            # Issue a weak JWT the dashboard uses to call the API.
+            # Issue the JWT the dashboard uses to call the API.
             session["token"] = make_jwt({
                 "user_id": row["id"], "username": row["username"], "role": row["role"],
             })
@@ -264,7 +259,7 @@ def api_notes(note_id):
     conn = get_db()
     cur = conn.cursor()
     # Flaw #7 (IDOR): the owner of the note is never checked. Any authenticated
-    # caller can read any note id. Flaw #4: `ident` may come from a forged token.
+    # caller can read any note id.
     cur.execute(
         "SELECT n.id, n.student_id, n.class_id, n.grade, n.comment, "
         "u.username AS student, c.name AS class_name "

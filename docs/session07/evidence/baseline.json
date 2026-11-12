@@ -1,0 +1,26 @@
+{
+  "time_utc": "2026-11-12T08:29:30.268342+00:00",
+  "stage": "baseline",
+  "base_url": "https://localhost",
+  "forged_token_target": "/api/notes/3",
+  "no_credentials": {
+    "status": 401,
+    "body": {
+      "error": "unauthorized"
+    }
+  },
+  "unsigned_teacher": {
+    "status": 200,
+    "note_id": 3,
+    "student": "bob",
+    "grade": 12.6,
+    "token_sha256": "6f05c6cd4412b67250218036abca02b5f1d306f4f4477faec6876ad26a54de1f"
+  },
+  "old_key_teacher": {
+    "status": 200,
+    "note_id": 3,
+    "student": "bob",
+    "grade": 12.6,
+    "token_sha256": "9ee0b6691d352c3b3ca84cd3028e6ff72cc105a3653ffcf81535be6e1c6b7ecb"
+  }
+}
