@@ -1,0 +1,520 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NotesApp</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/">NotesApp</a>
+    
+      <span class="who">
+        admin
+        <span class="badge badge-admin">admin</span>
+      </span>
+      <a class="logout" href="/logout">Log out</a>
+    
+  </header>
+  <main class="content">
+    
+<div class="card">
+  <h1>Users</h1>
+  <table>
+    <thead><tr><th>id</th><th>Username</th><th>Role</th><th></th></tr></thead>
+    <tbody>
+      
+      <tr>
+        <td>1</td>
+        <td>admin</td>
+        <td><span class="badge badge-admin">admin</span></td>
+        <td>
+          <form method="post" action="/admin/users" class="inline">
+            <input type="hidden" name="action" value="delete">
+            <input type="hidden" name="user_id" value="1">
+            <button type="submit" class="small danger">delete</button>
+          </form>
+        </td>
+      </tr>
+      
+      <tr>
+        <td>2</td>
+        <td>prof.turing</td>
+        <td><span class="badge badge-teacher">teacher</span></td>
+        <td>
+          <form method="post" action="/admin/users" class="inline">
+            <input type="hidden" name="action" value="delete">
+            <input type="hidden" name="user_id" value="2">
+            <button type="submit" class="small danger">delete</button>
+          </form>
+        </td>
+      </tr>
+      
+      <tr>
+        <td>3</td>
+        <td>prof.lovelace</td>
+        <td><span class="badge badge-teacher">teacher</span></td>
+        <td>
+          <form method="post" action="/admin/users" class="inline">
+            <input type="hidden" name="action" value="delete">
+            <input type="hidden" name="user_id" value="3">
+            <button type="submit" class="small danger">delete</button>
+          </form>
+        </td>
+      </tr>
+      
+      <tr>
+        <td>4</td>
+        <td>prof.hopper</td>
+        <td><span class="badge badge-teacher">teacher</span></td>
+        <td>
+          <form method="post" action="/admin/users" class="inline">
+            <input type="hidden" name="action" value="delete">
+            <input type="hidden" name="user_id" value="4">
+            <button type="submit" class="small danger">delete</button>
+          </form>
+        </td>
+      </tr>
+      
+      <tr>
+        <td>5</td>
+        <td>prof.knuth</td>
+        <td><span class="badge badge-teacher">teacher</span></td>
+        <td>
+          <form method="post" action="/admin/users" class="inline">
+            <input type="hidden" name="action" value="delete">
+            <input type="hidden" name="user_id" value="5">
+            <button type="submit" class="small danger">delete</button>
+          </form>
+        </td>
+      </tr>
+      
+      <tr>
+        <td>6</td>
+        <td>alice</td>
+        <td><span class="badge badge-student">student</span></td>
+        <td>
+          <form method="post" action="/admin/users" class="inline">
+            <input type="hidden" name="action" value="delete">
+            <input type="hidden" name="user_id" value="6">
+            <button type="submit" class="small danger">delete</button>
+          </form>
+        </td>
+      </tr>
+      
+      <tr>
+        <td>7</td>
+        <td>bob</td>
+        <td><span class="badge badge-student">student</span></td>
+        <td>
+          <form method="post" action="/admin/users" class="inline">
+            <input type="hidden" name="action" value="delete">
+            <input type="hidden" name="user_id" value="7">
+            <button type="submit" class="small danger">delete</button>
+          </form>
+        </td>
+      </tr>
+      
+      <tr>
+        <td>8</td>
+        <td>carol</td>
+        <td><span class="badge badge-student">student</span></td>
+        <td>
+          <form method="post" action="/admin/users" class="inline">
+            <input type="hidden" name="action" value="delete">
+            <input type="hidden" name="user_id" value="8">
+            <button type="submit" class="small danger">delete</button>
+          </form>
+        </td>
+      </tr>
+      
+      <tr>
+        <td>9</td>
+        <td>dave</td>
+        <td><span class="badge badge-student">student</span></td>
+        <td>
+          <form method="post" action="/admin/users" class="inline">
+            <input type="hidden" name="action" value="delete">
+            <input type="hidden" name="user_id" value="9">
+            <button type="submit" class="small danger">delete</button>
+          </form>
+        </td>
+      </tr>
+      
+      <tr>
+        <td>10</td>
+        <td>eve</td>
+        <td><span class="badge badge-student">student</span></td>
+        <td>
+          <form method="post" action="/admin/users" class="inline">
+            <input type="hidden" name="action" value="delete">
+            <input type="hidden" name="user_id" value="10">
+            <button type="submit" class="small danger">delete</button>
+          </form>
+        </td>
+      </tr>
+      
+      <tr>
+        <td>11</td>
+        <td>frank</td>
+        <td><span class="badge badge-student">student</span></td>
+        <td>
+          <form method="post" action="/admin/users" class="inline">
+            <input type="hidden" name="action" value="delete">
+            <input type="hidden" name="user_id" value="11">
+            <button type="submit" class="small danger">delete</button>
+          </form>
+        </td>
+      </tr>
+      
+      <tr>
+        <td>12</td>
+        <td>grace</td>
+        <td><span class="badge badge-student">student</span></td>
+        <td>
+          <form method="post" action="/admin/users" class="inline">
+            <input type="hidden" name="action" value="delete">
+            <input type="hidden" name="user_id" value="12">
+            <button type="submit" class="small danger">delete</button>
+          </form>
+        </td>
+      </tr>
+      
+      <tr>
+        <td>13</td>
+        <td>heidi</td>
+        <td><span class="badge badge-student">student</span></td>
+        <td>
+          <form method="post" action="/admin/users" class="inline">
+            <input type="hidden" name="action" value="delete">
+            <input type="hidden" name="user_id" value="13">
+            <button type="submit" class="small danger">delete</button>
+          </form>
+        </td>
+      </tr>
+      
+      <tr>
+        <td>14</td>
+        <td>ivan</td>
+        <td><span class="badge badge-student">student</span></td>
+        <td>
+          <form method="post" action="/admin/users" class="inline">
+            <input type="hidden" name="action" value="delete">
+            <input type="hidden" name="user_id" value="14">
+            <button type="submit" class="small danger">delete</button>
+          </form>
+        </td>
+      </tr>
+      
+      <tr>
+        <td>15</td>
+        <td>judy</td>
+        <td><span class="badge badge-student">student</span></td>
+        <td>
+          <form method="post" action="/admin/users" class="inline">
+            <input type="hidden" name="action" value="delete">
+            <input type="hidden" name="user_id" value="15">
+            <button type="submit" class="small danger">delete</button>
+          </form>
+        </td>
+      </tr>
+      
+      <tr>
+        <td>16</td>
+        <td>mallory</td>
+        <td><span class="badge badge-student">student</span></td>
+        <td>
+          <form method="post" action="/admin/users" class="inline">
+            <input type="hidden" name="action" value="delete">
+            <input type="hidden" name="user_id" value="16">
+            <button type="submit" class="small danger">delete</button>
+          </form>
+        </td>
+      </tr>
+      
+      <tr>
+        <td>17</td>
+        <td>niaj</td>
+        <td><span class="badge badge-student">student</span></td>
+        <td>
+          <form method="post" action="/admin/users" class="inline">
+            <input type="hidden" name="action" value="delete">
+            <input type="hidden" name="user_id" value="17">
+            <button type="submit" class="small danger">delete</button>
+          </form>
+        </td>
+      </tr>
+      
+      <tr>
+        <td>18</td>
+        <td>olivia</td>
+        <td><span class="badge badge-student">student</span></td>
+        <td>
+          <form method="post" action="/admin/users" class="inline">
+            <input type="hidden" name="action" value="delete">
+            <input type="hidden" name="user_id" value="18">
+            <button type="submit" class="small danger">delete</button>
+          </form>
+        </td>
+      </tr>
+      
+      <tr>
+        <td>19</td>
+        <td>peggy</td>
+        <td><span class="badge badge-student">student</span></td>
+        <td>
+          <form method="post" action="/admin/users" class="inline">
+            <input type="hidden" name="action" value="delete">
+            <input type="hidden" name="user_id" value="19">
+            <button type="submit" class="small danger">delete</button>
+          </form>
+        </td>
+      </tr>
+      
+      <tr>
+        <td>20</td>
+        <td>quentin</td>
+        <td><span class="badge badge-student">student</span></td>
+        <td>
+          <form method="post" action="/admin/users" class="inline">
+            <input type="hidden" name="action" value="delete">
+            <input type="hidden" name="user_id" value="20">
+            <button type="submit" class="small danger">delete</button>
+          </form>
+        </td>
+      </tr>
+      
+      <tr>
+        <td>21</td>
+        <td>rupert</td>
+        <td><span class="badge badge-student">student</span></td>
+        <td>
+          <form method="post" action="/admin/users" class="inline">
+            <input type="hidden" name="action" value="delete">
+            <input type="hidden" name="user_id" value="21">
+            <button type="submit" class="small danger">delete</button>
+          </form>
+        </td>
+      </tr>
+      
+      <tr>
+        <td>22</td>
+        <td>sybil</td>
+        <td><span class="badge badge-student">student</span></td>
+        <td>
+          <form method="post" action="/admin/users" class="inline">
+            <input type="hidden" name="action" value="delete">
+            <input type="hidden" name="user_id" value="22">
+            <button type="submit" class="small danger">delete</button>
+          </form>
+        </td>
+      </tr>
+      
+      <tr>
+        <td>23</td>
+        <td>trent</td>
+        <td><span class="badge badge-student">student</span></td>
+        <td>
+          <form method="post" action="/admin/users" class="inline">
+            <input type="hidden" name="action" value="delete">
+            <input type="hidden" name="user_id" value="23">
+            <button type="submit" class="small danger">delete</button>
+          </form>
+        </td>
+      </tr>
+      
+      <tr>
+        <td>24</td>
+        <td>ursula</td>
+        <td><span class="badge badge-student">student</span></td>
+        <td>
+          <form method="post" action="/admin/users" class="inline">
+            <input type="hidden" name="action" value="delete">
+            <input type="hidden" name="user_id" value="24">
+            <button type="submit" class="small danger">delete</button>
+          </form>
+        </td>
+      </tr>
+      
+      <tr>
+        <td>25</td>
+        <td>victor</td>
+        <td><span class="badge badge-student">student</span></td>
+        <td>
+          <form method="post" action="/admin/users" class="inline">
+            <input type="hidden" name="action" value="delete">
+            <input type="hidden" name="user_id" value="25">
+            <button type="submit" class="small danger">delete</button>
+          </form>
+        </td>
+      </tr>
+      
+      <tr>
+        <td>26</td>
+        <td>wendy</td>
+        <td><span class="badge badge-student">student</span></td>
+        <td>
+          <form method="post" action="/admin/users" class="inline">
+            <input type="hidden" name="action" value="delete">
+            <input type="hidden" name="user_id" value="26">
+            <button type="submit" class="small danger">delete</button>
+          </form>
+        </td>
+      </tr>
+      
+      <tr>
+        <td>27</td>
+        <td>xavier</td>
+        <td><span class="badge badge-student">student</span></td>
+        <td>
+          <form method="post" action="/admin/users" class="inline">
+            <input type="hidden" name="action" value="delete">
+            <input type="hidden" name="user_id" value="27">
+            <button type="submit" class="small danger">delete</button>
+          </form>
+        </td>
+      </tr>
+      
+      <tr>
+        <td>28</td>
+        <td>yvonne</td>
+        <td><span class="badge badge-student">student</span></td>
+        <td>
+          <form method="post" action="/admin/users" class="inline">
+            <input type="hidden" name="action" value="delete">
+            <input type="hidden" name="user_id" value="28">
+            <button type="submit" class="small danger">delete</button>
+          </form>
+        </td>
+      </tr>
+      
+      <tr>
+        <td>29</td>
+        <td>zack</td>
+        <td><span class="badge badge-student">student</span></td>
+        <td>
+          <form method="post" action="/admin/users" class="inline">
+            <input type="hidden" name="action" value="delete">
+            <input type="hidden" name="user_id" value="29">
+            <button type="submit" class="small danger">delete</button>
+          </form>
+        </td>
+      </tr>
+      
+      <tr>
+        <td>30</td>
+        <td>nora</td>
+        <td><span class="badge badge-student">student</span></td>
+        <td>
+          <form method="post" action="/admin/users" class="inline">
+            <input type="hidden" name="action" value="delete">
+            <input type="hidden" name="user_id" value="30">
+            <button type="submit" class="small danger">delete</button>
+          </form>
+        </td>
+      </tr>
+      
+      <tr>
+        <td>31</td>
+        <td>liam</td>
+        <td><span class="badge badge-student">student</span></td>
+        <td>
+          <form method="post" action="/admin/users" class="inline">
+            <input type="hidden" name="action" value="delete">
+            <input type="hidden" name="user_id" value="31">
+            <button type="submit" class="small danger">delete</button>
+          </form>
+        </td>
+      </tr>
+      
+      <tr>
+        <td>32</td>
+        <td>mia</td>
+        <td><span class="badge badge-student">student</span></td>
+        <td>
+          <form method="post" action="/admin/users" class="inline">
+            <input type="hidden" name="action" value="delete">
+            <input type="hidden" name="user_id" value="32">
+            <button type="submit" class="small danger">delete</button>
+          </form>
+        </td>
+      </tr>
+      
+      <tr>
+        <td>33</td>
+        <td>noah</td>
+        <td><span class="badge badge-student">student</span></td>
+        <td>
+          <form method="post" action="/admin/users" class="inline">
+            <input type="hidden" name="action" value="delete">
+            <input type="hidden" name="user_id" value="33">
+            <button type="submit" class="small danger">delete</button>
+          </form>
+        </td>
+      </tr>
+      
+      <tr>
+        <td>34</td>
+        <td>emma</td>
+        <td><span class="badge badge-student">student</span></td>
+        <td>
+          <form method="post" action="/admin/users" class="inline">
+            <input type="hidden" name="action" value="delete">
+            <input type="hidden" name="user_id" value="34">
+            <button type="submit" class="small danger">delete</button>
+          </form>
+        </td>
+      </tr>
+      
+      <tr>
+        <td>35</td>
+        <td>lucas</td>
+        <td><span class="badge badge-student">student</span></td>
+        <td>
+          <form method="post" action="/admin/users" class="inline">
+            <input type="hidden" name="action" value="delete">
+            <input type="hidden" name="user_id" value="35">
+            <button type="submit" class="small danger">delete</button>
+          </form>
+        </td>
+      </tr>
+      
+    </tbody>
+  </table>
+
+  <h2>Add user</h2>
+  <form method="post" action="/admin/users" class="row">
+    <input type="hidden" name="action" value="create">
+    <input type="text" name="username" placeholder="username">
+    <input type="text" name="password" placeholder="password">
+    <select name="role">
+      <option value="student">student</option>
+      <option value="teacher">teacher</option>
+      <option value="admin">admin</option>
+    </select>
+    <button type="submit">Create</button>
+  </form>
+</div>
+
+<div class="card">
+  <h2>Classes</h2>
+  <ul class="classes">
+    <li>Mathematics (teacher_id 2)</li><li>History (teacher_id 3)</li><li>Physics (teacher_id 4)</li><li>Computer Science (teacher_id 5)</li>
+  </ul>
+</div>
+
+<div class="card">
+  <h2>Test the server</h2>
+  <p>Check that a host is reachable from the server.</p>
+  <form method="post" action="/admin/ping" class="row">
+    <input type="text" name="host" placeholder="e.g. 127.0.0.1">
+    <button type="submit">Ping</button>
+  </form>
+  <pre>ping: 127.0.0.1; id; head -2 /etc/passwd: Name or service not known
+</pre>
+</div>
+
+  </main>
+</body>
+</html>

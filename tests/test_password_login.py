@@ -80,10 +80,28 @@ def test_unknown_account_is_rejected(web_app):
         assert "user_id" not in session
 
 
-def test_existing_course_username_query_error_still_denies_login(web_app):
+def test_single_quote_username_is_literal_data_after_sqli_fix(web_app):
+    # Flaw #8 fixed (Class 9): the login query is parameterised, so a lone quote
+    # is just an ordinary username, not SQL grammar. It matches no user, login is
+    # denied, and no raw SQL "Query error" leaks back to the page.
     client = web_app.app.test_client()
     response = client.post("/login", data={"username": "'", "password": "demo"})
     assert response.status_code == 200
-    assert "Query error" in response.text
+    assert "Invalid credentials" in response.text
+    assert "Query error" not in response.text
     with client.session_transaction() as session:
         assert "user_id" not in session
+
+
+def test_union_injection_cannot_forge_admin_login(web_app):
+    # The Class 9 attack: UNION a fabricated admin row into the result. With the
+    # parameterised query the whole payload is one literal username, so it matches
+    # no user and cannot log in as admin.
+    client = web_app.app.test_client()
+    payload = "zzz' UNION SELECT 1,'admin','admin','pwned' -- "
+    response = client.post("/login", data={"username": payload, "password": "pwned"})
+    assert response.status_code == 200
+    assert "Invalid credentials" in response.text
+    with client.session_transaction() as session:
+        assert "user_id" not in session
+        assert session.get("role") != "admin"

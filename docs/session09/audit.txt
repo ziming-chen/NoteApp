@@ -1,0 +1,21 @@
+INJECTION FIX — NotesApp flaws #8 (SQL injection) and #9 (command injection) closed
+
+  SQLi proof (break):   username  admin' --        -> login FAILS here (password is
+                        checked separately since Class 5 Argon2), admin page blocked.
+                        username  zzz' UNION SELECT 1,'admin','admin','pwned' --
+                        password  pwned            -> logged in as ADMIN, no real
+                        admin password used (login 302, admin page 200).
+  SQLi fix:             login() uses a parameterised query: WHERE username = %s with
+                        (username,). No string gluing.
+  SQLi proof (closed):  same UNION username now -> login FAILS, admin page 302. The
+                        whole payload is one literal username that matches no user.
+
+  CmdI proof (break):   host  127.0.0.1; id; head -2 /etc/passwd
+                        -> uid=0(root) gid=0(root) groups=0(root) and /etc/passwd leaked.
+  CmdI fix:             admin_ping() uses subprocess.run(["ping","-c","1",host]),
+                        shell=True removed. host is one argument.
+  CmdI proof (closed):  same host now -> "ping: 127.0.0.1; id; head -2 /etc/passwd:
+                        Name or service not known". No id, no /etc/passwd.
+
+  Real use still works: alice login OK [x]   plain 127.0.0.1 ping OK [x]
+  Tests: 102 passed (added command-injection + UNION regression tests).

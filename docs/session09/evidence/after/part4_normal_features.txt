@@ -1,0 +1,7 @@
+# Part 4 - real features still work after both fixes
+alice login: HTTP 302 (302 = ok)
+alice dashboard: HTTP 200 (200 = ok)
+-- plain ping 127.0.0.1 as admin --
+  PING 127.0.0.1 (127.0.0.1) 56(84) bytes of data.
+64 bytes from 127.0.0.1: icmp_seq=1 ttl=64 time=10.2 ms
+--- 127.0.0.1 ping statistics ---

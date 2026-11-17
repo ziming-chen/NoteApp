@@ -1,0 +1,5 @@
+# Part 1 - lab's classic payload admin' -- (SQL injection attempt)
+# This hardened NoteApp verifies the password separately (Class 5 Argon2), so the
+# comment-out trick does NOT bypass login here. Recorded honestly as blocked.
+login POST HTTP 200
+admin GET HTTP 302 (302 = redirected to login = NOT admin)

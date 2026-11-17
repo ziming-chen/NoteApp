@@ -1,0 +1,6 @@
+# Part 3 re-run - command injection vs subprocess list form (authenticated admin)
+# host payload: 127.0.0.1; id; head -2 /etc/passwd
+-- <pre> content --
+  ping: 127.0.0.1; id; head -2 /etc/passwd: Name or service not known
+-- leak check --
+NO id / NO /etc/passwd  = command injection CLOSED

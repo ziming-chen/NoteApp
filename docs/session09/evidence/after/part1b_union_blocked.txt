@@ -1,0 +1,4 @@
+# Part 1b re-run - UNION SQLi against parameterised query
+# username payload: zzz' UNION SELECT 1,'admin','admin','pwned' -- 
+login POST HTTP 200
+admin GET HTTP 302 (302 = blocked)

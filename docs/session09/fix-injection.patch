@@ -1,0 +1,44 @@
+diff --git a/web/app.py b/web/app.py
+index 724da83..49c020e 100644
+--- a/web/app.py
++++ b/web/app.py
+@@ -183,18 +183,17 @@ def login():
+     if request.method == "POST":
+         username = request.form.get("username", "")
+         password = request.form.get("password", "")
+-        # Flaw #8 remains for the later SQL-injection class: username is concatenated.
++        # Fixed (flaw #8): parameterised query. The username is passed as a
++        # value, never spliced into the SQL text, so quotes or -- inside it are
++        # treated as data and cannot change the query's structure.
+         # Password verification is handled separately so legacy values can migrate.
+-        query = (
+-            "SELECT id, username, role, password FROM users "
+-            "WHERE username = '" + username + "'"
+-        )
++        query = "SELECT id, username, role, password FROM users WHERE username = %s"
+         conn = get_db()
+         authenticated = False
+         try:
+             cur = conn.cursor()
+             try:
+-                cur.execute(query)
++                cur.execute(query, (username,))
+                 row = cur.fetchone()
+             except Exception as e:
+                 # Keep the raw error visible - helps the SQLi session.
+@@ -450,11 +449,12 @@ def admin_ping():
+     if not login_required("admin"):
+         return redirect(url_for("login"))
+     host = request.form.get("host", "")
+-    # Host is concatenated straight into a shell command.
+-    cmd = "ping -c 1 " + host
++    # Fixed (flaw #9): pass an argument list and drop shell=True. The whole host
++    # value becomes a single argument to ping, so ; | & $() cannot start a new
++    # command - the input is data, never shell syntax.
+     try:
+         result = subprocess.run(
+-            cmd, shell=True, capture_output=True, text=True, timeout=10,
++            ["ping", "-c", "1", host], capture_output=True, text=True, timeout=10,
+         )
+         output = result.stdout + result.stderr
+     except Exception as e:

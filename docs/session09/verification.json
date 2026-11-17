@@ -1,0 +1,58 @@
+{
+  "lab": "Class 9 - Injection (Your words become commands)",
+  "app": "NotesApp clone, local HTTP on 127.0.0.1:8080",
+  "date": "2026-11-17",
+  "author": "Chen Ziming (2023905333)",
+  "mode": "solo (individual execution)",
+  "flaws_addressed": {
+    "flaw_8_sql_injection": {
+      "location": "web/app.py login() query",
+      "classic_lab_payload": {
+        "username": "admin' -- ",
+        "password": "anything",
+        "before_fix_result": "BLOCKED - login POST 200, admin GET 302 (redirect to login)",
+        "note": "This hardened NotesApp verifies the password separately in Python (Class 5 Argon2 migration), so the lab's comment-out trick does not bypass login. The injection point is real; this particular bypass is stopped by the separate password check."
+      },
+      "union_payload": {
+        "username": "zzz' UNION SELECT 1,'admin','admin','pwned' -- ",
+        "password": "pwned",
+        "before_fix_result": "SUCCESS - logged in as admin without admin's real password (login POST 302, admin GET 200)",
+        "after_fix_result": "BLOCKED - whole payload is one literal username (login POST 200, admin GET 302)",
+        "side_effect_observed": "Using id=1 in the UNION made the legacy-upgrade path overwrite the real admin password hash. Restored admin to seed value admin123. For demonstration use a non-existent id (e.g. 999)."
+      },
+      "fix": "Parameterised query: SELECT ... WHERE username = %s with (username,) tuple. No string concatenation."
+    },
+    "flaw_9_command_injection": {
+      "location": "web/app.py admin_ping()",
+      "payload": {
+        "host": "127.0.0.1; id; head -2 /etc/passwd",
+        "before_fix_result": "SUCCESS - returned uid=0(root) gid=0(root) groups=0(root) and /etc/passwd lines (root:x:0:0 ...)",
+        "after_fix_result": "BLOCKED - 'ping: 127.0.0.1; id; head -2 /etc/passwd: Name or service not known'; no uid=, no /etc/passwd"
+      },
+      "fix": "subprocess.run([\"ping\", \"-c\", \"1\", host], ...) argument list, shell=True removed. Host is a single argument, shell metacharacters are inert."
+    }
+  },
+  "real_features_after_fix": {
+    "alice_login": "HTTP 302 -> dashboard HTTP 200 (ok)",
+    "plain_ping_127_0_0_1": "ping succeeds as before (ok)"
+  },
+  "tests": {
+    "command": "pytest -q (via session07-venv)",
+    "result": "102 passed",
+    "new_or_updated": [
+      "tests/test_password_login.py: replaced obsolete test that asserted the old SQL 'Query error' symptom; now asserts a lone quote is literal data and no error leaks; added UNION-cannot-forge-admin test",
+      "tests/test_command_injection.py: new - ; $() `` payloads run no second command, /admin/ping requires admin session"
+    ],
+    "coverage": {
+      "web/app.py": "84%",
+      "web/password_storage.py": "100%",
+      "total": "88%",
+      "note": "uncovered app.py lines are other teaching flaws kept for later classes, out of this lab's scope"
+    }
+  },
+  "data_integrity": {
+    "seed_accounts": "admin/admin123, alice/alicepw restored/intact",
+    "note": "The only data change was the self-inflicted admin-password overwrite from the UNION demo, which was restored. No notes/classes/enrollments were modified."
+  },
+  "predictions_recorded": "See prediction.md. The lab asks for a Yes/No prediction before running each part."
+}
