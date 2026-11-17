@@ -4,22 +4,28 @@
   "date": "2026-11-17",
   "author": "Chen Ziming (2023905333)",
   "mode": "solo (individual execution)",
+  "source": {
+    "commit": "420132e",
+    "patch": "fix-injection.patch",
+    "deviation": "The lab baseline builds WHERE username = '...' AND password = '...'. This build was hardened in the Class 5 password lab: login() selects the row by username only and verifies the password separately in Python (Argon2 + legacy fallback). I did not re-introduce the old query. The no-password admin proof is the UNION payload, not the slide's admin' --."
+  },
   "flaws_addressed": {
     "flaw_8_sql_injection": {
       "location": "web/app.py login() query",
-      "classic_lab_payload": {
-        "username": "admin' -- ",
-        "password": "anything",
-        "before_fix_result": "BLOCKED - login POST 200, admin GET 302 (redirect to login)",
-        "note": "This hardened NotesApp verifies the password separately in Python (Class 5 Argon2 migration), so the lab's comment-out trick does not bypass login. The injection point is real; this particular bypass is stopped by the separate password check."
-      },
       "union_payload": {
         "username": "zzz' UNION SELECT 1,'admin','admin','pwned' -- ",
         "password": "pwned",
         "before_fix_result": "SUCCESS - logged in as admin without admin's real password (login POST 302, admin GET 200)",
-        "after_fix_result": "BLOCKED - whole payload is one literal username (login POST 200, admin GET 302)",
-        "side_effect_observed": "Using id=1 in the UNION made the legacy-upgrade path overwrite the real admin password hash. Restored admin to seed value admin123. For demonstration use a non-existent id (e.g. 999)."
+        "after_fix_result": "BLOCKED - whole payload is one literal username (login POST 200, admin GET 302)"
       },
+      "classic_lab_payload": {
+        "username": "admin' -- ",
+        "password": "any wrong password",
+        "before_fix_result": "BLOCKED - login POST 200, admin GET 302 (redirect to login)",
+        "after_fix_result": "BLOCKED - login POST 200, admin GET 302",
+        "note": "This build verifies the password separately in Python (Class 5 Argon2 migration), so the lab's comment-out trick does not bypass login. I did not re-introduce the old query. The injection point was real before the fix; the same flaw #8 is proven with the UNION payload above."
+      },
+      "side_effect_observed": "Using id=1 in the UNION made the successful legacy-login upgrade write its replacement hash to the real admin row. Password reset to admin123 and verified by a fresh login; the stored hash is now Argon2id. For demonstration use a non-existent id (e.g. 999).",
       "fix": "Parameterised query: SELECT ... WHERE username = %s with (username,) tuple. No string concatenation."
     },
     "flaw_9_command_injection": {
@@ -37,22 +43,23 @@
     "plain_ping_127_0_0_1": "ping succeeds as before (ok)"
   },
   "tests": {
-    "command": "pytest -q (via session07-venv)",
+    "command": "pytest -q (Python 3.12, session07-venv, PostgreSQL on 127.0.0.1:15432)",
     "result": "102 passed",
     "new_or_updated": [
-      "tests/test_password_login.py: replaced obsolete test that asserted the old SQL 'Query error' symptom; now asserts a lone quote is literal data and no error leaks; added UNION-cannot-forge-admin test",
-      "tests/test_command_injection.py: new - ; $() `` payloads run no second command, /admin/ping requires admin session"
+      "tests/test_password_login.py: replaced the obsolete test that asserted the old SQL 'Query error' symptom; the replacement asserts a lone quote is literal data, no raw SQL error leaks for that input, and UNION cannot forge an admin login",
+      "tests/test_command_injection.py: new - ; $() and backtick payloads run no second command; /admin/ping requires an admin session"
     ],
+    "negative_controls": "The command-injection tests assert the absence of uid= and /etc/passwd. The positive control for a normal ping is evidence/after/part4_normal_features.txt.",
     "coverage": {
       "web/app.py": "84%",
       "web/password_storage.py": "100%",
       "total": "88%",
-      "note": "uncovered app.py lines are other teaching flaws kept for later classes, out of this lab's scope"
+      "note": "Uncovered app.py lines are mostly other routes/flaws kept for later classes, outside this lab's scope."
     }
   },
   "data_integrity": {
-    "seed_accounts": "admin/admin123, alice/alicepw restored/intact",
-    "note": "The only data change was the self-inflicted admin-password overwrite from the UNION demo, which was restored. No notes/classes/enrollments were modified."
+    "seed_accounts": "admin/admin123 and alice/alicepw logins verified; users/classes/notes/enrollments row counts 35/4/60/60.",
+    "note": "The UNION demo used id=1, so the legacy-login upgrade wrote its replacement hash to the real admin row. The password was reset to admin123 and a fresh admin login was verified. The stored hash is now Argon2id, not the original seed plaintext. No notes/classes/enrollments were modified. A non-destructive demo uses id=999."
   },
-  "predictions_recorded": "See prediction.md. The lab asks for a Yes/No prediction before running each part."
+  "predictions_recorded": "See prediction.md. Yes/No reasoning is recorded for each part."
 }

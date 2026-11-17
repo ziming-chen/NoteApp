@@ -1,10 +1,18 @@
 INJECTION FIX — NotesApp flaws #8 (SQL injection) and #9 (command injection) closed
 
-  SQLi proof (break):   username  admin' --        -> login FAILS here (password is
-                        checked separately since Class 5 Argon2), admin page blocked.
-                        username  zzz' UNION SELECT 1,'admin','admin','pwned' --
-                        password  pwned            -> logged in as ADMIN, no real
-                        admin password used (login 302, admin page 200).
+  SQLi proof (break):   username  zzz' UNION SELECT 1,'admin','admin','pwned' --
+                        password  pwned            -> logged in as ADMIN without
+                        admin's real password (login 302, admin page 200).
+
+  Deviation: this build was hardened in the Class 5 password lab: login() looks the
+  user up by name only, and the password is verified separately in Python (Argon2,
+  legacy fallback). There is no SQL "AND password = ..." clause to comment out, and
+  I did not re-introduce the old query. The lab's classic payload is therefore
+  blocked here; the same flaw #8 was exploitable with UNION before the fix, which is
+  the "admin with no password" proof above.
+
+  SQLi note:            username  admin' --        -> login FAILS (200; admin 302)
+                        because the password is checked separately, not in SQL.
   SQLi fix:             login() uses a parameterised query: WHERE username = %s with
                         (username,). No string gluing.
   SQLi proof (closed):  same UNION username now -> login FAILS, admin page 302. The
@@ -17,5 +25,10 @@ INJECTION FIX — NotesApp flaws #8 (SQL injection) and #9 (command injection) c
   CmdI proof (closed):  same host now -> "ping: 127.0.0.1; id; head -2 /etc/passwd:
                         Name or service not known". No id, no /etc/passwd.
 
+  Data:                 the UNION demo used id=1, which let the legacy-login upgrade
+                        overwrite the real admin password row. Password reset to
+                        admin123 and verified by a fresh login; other tables unchanged.
+                        A non-destructive demo uses id=999.
   Real use still works: alice login OK [x]   plain 127.0.0.1 ping OK [x]
   Tests: 102 passed (added command-injection + UNION regression tests).
+  Commit: 420132e.

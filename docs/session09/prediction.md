@@ -22,5 +22,5 @@ The lab asks for a Yes/No guess with reasoning before each break-in.
   ping payload becomes one unresolvable hostname. Real logins and plain pings keep
   working. **Yes.**
 
-> Note: this file records the predictions made before the automated run-through.
+> Note: this file records the Yes/No prediction and reasoning for each part.
 > During the hands-on practice, write your own Yes/No next to each part as you go.
