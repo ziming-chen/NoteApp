@@ -1,0 +1,7 @@
+﻿classes|4
+enrollments|60
+notes|60
+users|35
+1|6|1|11.0|90|aesgcm:v1:
+comments_not_encrypted|0
+note1_owner|alice

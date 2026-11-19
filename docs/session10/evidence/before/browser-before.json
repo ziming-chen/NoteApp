@@ -1,0 +1,51 @@
+{
+  "mode": "before",
+  "base": "http://127.0.0.1:8080",
+  "executable": "C:/Program Files/Google/Chrome/Application/chrome.exe",
+  "browser_version": "157.0.8103.79",
+  "alice": {
+    "url": "http://127.0.0.1:8080/dashboard",
+    "dialogs": [
+      {
+        "type": "alert",
+        "message": "XSS by Eve"
+      }
+    ],
+    "script_elements": 2,
+    "comment_cell": {
+      "innerHTML": "<script>alert('XSS by Eve')</script>",
+      "textContent": "alert('XSS by Eve')",
+      "hasScriptElement": true
+    },
+    "screenshot": "D:\\AAAdile\\Work\\Cybersecurity\\Assignments\\Session10\\Lab\\evidence\\before\\dashboard-before.png"
+  },
+  "teacher": {
+    "url": "http://127.0.0.1:8080/teacher",
+    "dialogs": [
+      {
+        "type": "alert",
+        "message": "XSS by Eve"
+      }
+    ],
+    "script_elements": 1,
+    "comment_cell": {
+      "innerHTML": "<script>alert('XSS by Eve')</script>",
+      "textContent": "alert('XSS by Eve')",
+      "hasScriptElement": true
+    },
+    "screenshot": "D:\\AAAdile\\Work\\Cybersecurity\\Assignments\\Session10\\Lab\\evidence\\before\\teacher-before.png"
+  },
+  "checks": {
+    "alert_fired_in_alice_browser": true,
+    "raw_script_in_alice_page": true,
+    "alice_cell_shows_literal_payload": false,
+    "teacher_page_same_state": true
+  },
+  "passed": true,
+  "expected": {
+    "alert_fired_in_alice_browser": true,
+    "raw_script_in_alice_page": true,
+    "alice_cell_shows_literal_payload": false,
+    "teacher_page_same_state": true
+  }
+}

@@ -1,0 +1,125 @@
+{
+  "lab": "Class 10 - Stored XSS (Your words run in someone else's browser)",
+  "app": "NotesApp clone, local HTTP on 127.0.0.1:8080",
+  "date": "2026-11-18",
+  "author": "Chen Ziming (CHU 2023905333)",
+  "mode": "solo (individual execution)",
+  "source": {
+    "commit": "845e4be",
+    "patch": "fix-stored-xss.patch",
+    "lab_page": "https://kristenpire.github.io/epita-security-labs/class10/stored-xss/",
+    "archived_page": "Materials/Session10_Stored_XSS.html",
+    "archived_page_sha256": "5b5db7ce68528f16218dcabfc7044b3a5472e4dc35b85f44d261b57f5d68566b"
+  },
+  "flaw_10_stored_xss": {
+    "location": [
+      "web/templates/dashboard.html:15",
+      "web/templates/teacher.html:49"
+    ],
+    "vulnerable_template": "<td>{% autoescape false %}{{ n.comment }}{% endautoescape %}</td>",
+    "payload": "<script>alert('XSS by Eve')</script>",
+    "victim": "alice (user id 6), note 1 (Mathematics, 16.2)",
+    "attacker": "prof.turing (teacher) - the only role allowed to write grade comments",
+    "before_fix": {
+      "http": {
+        "teacher_login": 302,
+        "comment_saved": 302,
+        "alice_login": 302,
+        "alice_dashboard": 200
+      },
+      "alice_page": {
+        "raw_script_matches": 1,
+        "escaped_matches": 0,
+        "comment_cell": "<td><script>alert('XSS by Eve')</script></td>"
+      },
+      "teacher_page": {
+        "raw_script_matches": 1
+      },
+      "browser": {
+        "engine": "Chrome 157.0.8103.79, headless, driven by Playwright 1.62.1",
+        "alice_dialogs": [
+          { "type": "alert", "message": "XSS by Eve" }
+        ],
+        "teacher_dialogs": [
+          { "type": "alert", "message": "XSS by Eve" }
+        ],
+        "script_element_in_comment_cell": true,
+        "text_rendered_in_cell": null
+      }
+    },
+    "fix": "Removed the {% autoescape false %} wrapper in both templates; each line became <td>{{ n.comment }}</td>. Templates are COPYed into the image, so the stack was rebuilt with docker compose -f docker-compose.yml -f compose.windows.yml up -d --build.",
+    "after_fix_same_stored_row": {
+      "http": {
+        "alice_login": 302,
+        "alice_dashboard": 200
+      },
+      "alice_page": {
+        "raw_script_matches": 0,
+        "escaped_matches": 1,
+        "comment_cell": "<td>&lt;script&gt;alert(&#39;XSS by Eve&#39;)&lt;/script&gt;</td>"
+      },
+      "image_check": "docker exec noteapp-web-1 grep -rn 'autoescape false' /app/templates/ -> no match (exit 1)"
+    },
+    "same_payload_reposted_after_fix": {
+      "http": {
+        "teacher_save": 302,
+        "alice_dashboard": 200
+      },
+      "alice_page": {
+        "live_script_alert_matches": 0,
+        "escaped_matches": 1
+      }
+    },
+    "browser_after_fix": {
+      "alice_dialogs": [],
+      "script_element_in_comment_cell": false,
+      "comment_cell_text": "<script>alert('XSS by Eve')</script>",
+      "teacher_page_same": true
+    }
+  },
+  "normal_comment_still_works": {
+    "comment": "score < 10 on part 1 & 2, see me",
+    "http": {
+      "teacher_save": 302,
+      "alice_dashboard": 200
+    },
+    "alice_page": {
+      "escaped_form_matches": 1,
+      "raw_less_than_matches": 0,
+      "comment_cell": "<td>score &lt; 10 on part 1 &amp; 2, see me</td>"
+    },
+    "browser_text": "score < 10 on part 1 & 2, see me"
+  },
+  "tests": {
+    "command": "python -m pytest -q --cov=web --cov-report=term-missing (project container, repository mounted at /work, TEST_DB_HOST=db)",
+    "result": "106 passed",
+    "new": "tests/test_stored_xss.py - the student dashboard and the teacher table deliver the payload as escaped text and never as a live <script>; a normal comment keeps < and &; a guard test fails if any template in the Jinja search path contains 'autoescape false'",
+    "coverage": {
+      "web/app.py": "84%",
+      "web/comment_crypto.py": "100%",
+      "web/comment_migration.py": "100%",
+      "web/export_hmac.py": "100%",
+      "web/password_storage.py": "100%",
+      "total": "88%"
+    },
+    "environment_note": "The suite normally runs on the host against PostgreSQL on 127.0.0.1:15432. On this Windows host the temporary directory was unusable during verification, so the identical tests were run in a throwaway container with the repository mounted."
+  },
+  "data_integrity": {
+    "row_counts": {
+      "users": 35,
+      "classes": 4,
+      "enrollments": 60,
+      "notes": 60
+    },
+    "note_1": "still owned by alice (user id 6); now carries the Part 4 comment and grade 11.0; the comment is stored as aesgcm:v1: ciphertext (90 bytes)",
+    "comments_not_encrypted": 0,
+    "note": "Escaping changes rendering only; storage was not touched by this fix."
+  },
+  "residual_risks": [
+    "No Content-Security-Policy or nonce is set anywhere (base.html, app.py); a policy would not have stopped this inline script either.",
+    "/api/notes/<id> returns the comment as JSON; the dashboard writes it with textContent, but any client assigning it to innerHTML would reintroduce the flaw on another path.",
+    "That the script runs with alice's session is measured at execution level (same-origin inline script inside her page). Cookie theft or a forged grade POST as alice was not attempted.",
+    "Other teaching flaws remain untouched (e.g. #11 missing CSRF on the grade POST, #13 container runs as root with the Docker socket mounted)."
+  ],
+  "predictions_recorded": "See prediction.md - written before the run: it runs; inert after the fix; a normal comment is unaffected."
+}

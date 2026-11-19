@@ -17,10 +17,11 @@
 | Session 07: fix the login | [HS256 verifier, key rotation and audit](docs/session07/README.md) |
 | Session 08: IDOR exercise | [Cross-user grade read, fix and verification](docs/session08/README.md) |
 | Session 09: injection | [SQL injection and command injection, fixes and evidence](docs/session09/README.md) |
+| Session 10: stored XSS | [Stored `<script>` comment, browser proof and autoescaping fix](docs/session10/README.md) |
 
 **Session 05 pair:** 陈子明 Chen Ziming (CHU ID 2023905333) and 吴彦澜 Wu Yanlan (CHU ID 2023905420).
 
-The active application includes comment encryption, authenticated CSV exports, Argon2id upgrade-on-login, HS256 JWT verification, a parameterised login query and an argument-list admin ping. Set the required JWT signing key before starting the stack. [Session 07 key setup](docs/session07/README.md#reproduce)
+The active application includes comment encryption, authenticated CSV exports, Argon2id upgrade-on-login, HS256 JWT verification, a parameterised login query, an argument-list admin ping and default HTML autoescaping for grade comments. Set the required JWT signing key before starting the stack. [Session 07 key setup](docs/session07/README.md#reproduce)
 
 The optional HTTPS overlay puts nginx in front of Flask and removes the direct web port. The Windows launcher uses plain HTTP. Run the regression suite from the repository root after installing `requirements-dev.txt`, with the local lab PostgreSQL service available on port 15432. [Session 05 HTTPS setup and certificate generation](docs/session05/README.md#run-the-submitted-application)
 
@@ -28,7 +29,7 @@ The optional HTTPS overlay puts nginx in front of Flask and removes the direct w
 python -m pytest -q --cov=export_hmac --cov=comment_crypto --cov=comment_migration --cov=password_storage --cov-branch --cov-report=term-missing --cov-fail-under=95
 ```
 
-The application suite has 102 passing checks after Class 9. Integration tests use disposable databases. The application remains a deliberately vulnerable course target. [Session 09 test output](docs/session09/evidence/after/pytest.txt)
+The application suite has 106 passing checks after Class 10. Integration tests use disposable databases. The application remains a deliberately vulnerable course target. [Session 10 test output](docs/session10/evidence/after/pytest.txt)
 
 ## Session 02 Threat Model
 

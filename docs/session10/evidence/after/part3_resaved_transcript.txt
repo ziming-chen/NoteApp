@@ -1,0 +1,11 @@
+﻿# Part 3 - the same attack, re-sent after the fix: shown, not run
+# The teacher re-posts the identical payload through the normal form endpoint.
+# curl -b teacher.jar --data-urlencode note_id=1 --data-urlencode grade=16.2
+#      --data-urlencode "comment=<script>alert('XSS by Eve')</script>" \http://127.0.0.1:8080/grades
+# teacher re-save: HTTP 302
+# curl -b alice.jar \http://127.0.0.1:8080/dashboard -> HTTP 200
+# live "<script>alert" in alice's page        : 0   (must be 0)
+# escaped &lt;script&gt;...&lt;/script&gt; in page : 1
+#
+# Same input, same database value, different output: the escaping happens at
+# render time, so old rows are fixed too - the teacher does not re-post anything.

@@ -1,0 +1,29 @@
+﻿docker.exe :  Container noteapp-web-run-e6858a8c904e Creating 
+所在位置 行:7 字符: 8
++ $out = & docker compose -f docker-compose.yml -f compose.windows.yml  ...
++        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ( Container note...c904e Creating :String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+ Container noteapp-web-run-e6858a8c904e Created 
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system pack
+age manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+
+[notice] A new release of pip is available: 24.0 -> 26.3
+[notice] To update, run: pip install --upgrade pip
+........................................................................ [ 67%]
+..................................                                       [100%]
+================================ tests coverage ================================
+_______________ coverage: platform linux, python 3.11.18-final-0 _______________
+
+Name                       Stmts   Miss  Cover   Missing
+--------------------------------------------------------
+web/app.py                   337     54    84%   44, 66-67, 72-77, 141-142, 169-177, 198-201, 318, 404, 428, 433-442, 460-461, 487-502, 507-512, 516-518
+web/comment_crypto.py         40      0   100%
+web/comment_migration.py      27      0   100%
+web/export_hmac.py            32      0   100%
+web/password_storage.py       13      0   100%
+--------------------------------------------------------
+TOTAL                        449     54    88%
+106 passed in 11.43s
+

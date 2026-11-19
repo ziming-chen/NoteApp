@@ -1,0 +1,43 @@
+{
+  "mode": "normal",
+  "base": "http://127.0.0.1:8080",
+  "executable": "C:/Program Files/Google/Chrome/Application/chrome.exe",
+  "browser_version": "157.0.8103.79",
+  "alice": {
+    "url": "http://127.0.0.1:8080/dashboard",
+    "dialogs": [],
+    "script_elements": 1,
+    "comment_cell": {
+      "innerHTML": "score &lt; 10 on part 1 &amp; 2, see me",
+      "textContent": "score < 10 on part 1 & 2, see me",
+      "hasScriptElement": false
+    },
+    "screenshot": "D:\\AAAdile\\Work\\Cybersecurity\\Assignments\\Session10\\Lab\\evidence\\after\\dashboard-normal.png"
+  },
+  "teacher": {
+    "url": "http://127.0.0.1:8080/teacher",
+    "dialogs": [],
+    "script_elements": 0,
+    "comment_cell": {
+      "innerHTML": "score &lt; 10 on part 1 &amp; 2, see me",
+      "textContent": "score < 10 on part 1 & 2, see me",
+      "hasScriptElement": false
+    },
+    "screenshot": "D:\\AAAdile\\Work\\Cybersecurity\\Assignments\\Session10\\Lab\\evidence\\after\\teacher-normal.png"
+  },
+  "checks": {
+    "alert_fired_in_alice_browser": false,
+    "raw_script_in_alice_page": false,
+    "alice_cell_shows_literal_payload": true,
+    "alice_cell_uses_html_entities": true,
+    "teacher_page_same_state": true
+  },
+  "expected": {
+    "alert_fired_in_alice_browser": false,
+    "raw_script_in_alice_page": false,
+    "alice_cell_shows_literal_payload": true,
+    "alice_cell_uses_html_entities": true,
+    "teacher_page_same_state": true
+  },
+  "passed": true
+}

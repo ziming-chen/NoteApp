@@ -1,0 +1,75 @@
+﻿docker.exe :  Image noteapp-web Building 
+所在位置 行:14 字符: 10
++ $build = & docker compose -f docker-compose.yml -f compose.windows.ym ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ( Image noteapp-web Building :String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+#1 [internal] load local bake definitions
+#1 reading from stdin 533B 0.0s done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile: 995B done
+#2 DONE 0.1s
+
+#3 [internal] load metadata for docker.io/library/python:3.11-slim
+#3 DONE 0.6s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 110B done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 DONE 0.0s
+
+#6 [1/7] FROM docker.io/library/python:3.11-slim@sha256:07d4824036af339fa1b6ef769cc99d9c10a141769538b52b3b597c84f7a7b535
+#6 resolve docker.io/library/python:3.11-slim@sha256:07d4824036af339fa1b6ef769cc99d9c10a141769538b52b3b597c84f7a7b535 0.1s done
+#6 DONE 0.1s
+
+#5 [internal] load build context
+#5 transferring context: 3.68kB done
+#5 DONE 0.0s
+
+#7 [3/7] RUN apt-get update && apt-get install -y --no-install-recommends iputils-ping     && rm -rf /var/lib/apt/lists/*
+#7 CACHED
+
+#8 [4/7] COPY requirements.txt .
+#8 CACHED
+
+#9 [2/7] WORKDIR /app
+#9 CACHED
+
+#10 [5/7] RUN pip install --no-cache-dir -r requirements.txt
+#10 CACHED
+
+#11 [6/7] COPY . /app
+#11 DONE 0.1s
+
+#12 [7/7] RUN mkdir -p /var/log/notesapp /app/backups     && printf 'DB_PASSWORD=notesapp_pg_pw_2024\n' > /app/config.env     && printf '%s\n' '-- nightly dump of users table'         'admin:admin123:admin' 'prof.turing:teach123:teacher' > /app/backups/users_backup.sql     && touch /var/log/notesapp/app.log     && chmod -R 0777 /var/log/notesapp /app/backups     && chmod 0666 /app/config.env
+#12 DONE 0.4s
+
+#13 exporting to image
+#13 exporting layers
+#13 exporting layers 0.5s done
+#13 exporting manifest sha256:055c0140dcb01b8e87e4a6a2c098e6634eb87693c783d632e0a61a4fec209a38 0.0s done
+#13 exporting config sha256:4adb598ca7a99c8cf2e1964f933068343de43874c8b1ef66dda4623950e0ca34 0.0s done
+#13 exporting attestation manifest sha256:9a81396ddab2163314948938b358b70c7a350c6ace2a4bd660a501da43df4f8a
+#13 exporting attestation manifest sha256:9a81396ddab2163314948938b358b70c7a350c6ace2a4bd660a501da43df4f8a 0.0s done
+#13 exporting manifest list sha256:d1aa400811c95235615c904a9a32b0b6cf13c464f2008ba648f476db31f9b3f0 0.0s done
+#13 naming to docker.io/library/noteapp-web:latest done
+#13 unpacking to docker.io/library/noteapp-web:latest
+#13 unpacking to docker.io/library/noteapp-web:latest 0.1s done
+#13 DONE 0.8s
+
+#14 resolving provenance for metadata file
+#14 DONE 0.0s
+ Image noteapp-web Built 
+ Container noteapp-db-1 Running 
+ Container noteapp-web-1 Recreate 
+ Container noteapp-web-1 Recreated 
+ Container noteapp-db-1 Waiting 
+ Container noteapp-db-1 Healthy 
+ Container noteapp-web-1 Starting 
+ Container noteapp-web-1 Started 
+

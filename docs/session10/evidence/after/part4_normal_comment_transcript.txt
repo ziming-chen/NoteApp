@@ -1,0 +1,10 @@
+﻿# Part 4 - a normal comment is not mangled by the fix
+# curl -b teacher.jar --data-urlencode note_id=1 --data-urlencode grade=11.0
+#      --data-urlencode "comment=score < 10 on part 1 & 2, see me" \http://127.0.0.1:8080/grades
+# teacher save: HTTP 302
+# curl -b alice.jar \http://127.0.0.1:8080/dashboard -> HTTP 200
+# "score &lt; 10 on part 1 &amp; 2, see me" present in page : 1
+# raw "score < 10" (would start a tag) present in page      : 0
+# comment cell as alice's browser receives it:
+#   <td>score &lt; 10 on part 1 &amp; 2, see me</td>
+# Rendered in Chrome as: score < 10 on part 1 & 2, see me   (see dashboard-normal.png)

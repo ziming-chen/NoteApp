@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NotesApp</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/">NotesApp</a>
+    
+      <span class="who">
+        alice
+        <span class="badge badge-student">student</span>
+      </span>
+      <a class="logout" href="/logout">Log out</a>
+    
+  </header>
+  <main class="content">
+    
+<div class="card">
+  <h1>My grades</h1>
+  
+  <table>
+    <thead><tr><th>ID</th><th>Class</th><th>Grade</th><th>Comment</th></tr></thead>
+    <tbody>
+      
+      <tr>
+        <td>2</td>
+        <td>Computer Science</td>
+        <td>10.5</td>
+        
+        <td>Needs to review chapter 3.</td>
+      </tr>
+      
+      <tr>
+        <td>1</td>
+        <td>Mathematics</td>
+        <td>16.2</td>
+        
+        <td>&lt;script&gt;alert(&#39;XSS by Eve&#39;)&lt;/script&gt;</td>
+      </tr>
+      
+    </tbody>
+  </table>
+  
+</div>
+
+<div class="card">
+  <h2>Grade detail (API)</h2>
+  <p>Look up a single grade by its id.</p>
+  <input type="number" id="noteId" placeholder="note id" value="2">
+  <button onclick="loadNote()">Load</button>
+  <pre id="apiOut"></pre>
+</div>
+
+<script>
+  const TOKEN = "eyJhbGciOiAiSFMyNTYiLCAidHlwIjogIkpXVCJ9.eyJ1c2VyX2lkIjogNiwgInVzZXJuYW1lIjogImFsaWNlIiwgInJvbGUiOiAic3R1ZGVudCJ9.Ie7A_WTgxtQlV44M4E--MyqZCB8dbYe3aT3PYBmEDuo";
+  async function loadNote() {
+    const id = document.getElementById('noteId').value;
+    const res = await fetch('/api/notes/' + id, {
+      headers: { 'Authorization': 'Bearer ' + TOKEN }
+    });
+    const data = await res.json();
+    document.getElementById('apiOut').textContent = JSON.stringify(data, null, 2);
+  }
+</script>
+
+  </main>
+</body>
+</html>

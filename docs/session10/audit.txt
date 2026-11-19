@@ -1,0 +1,23 @@
+STORED XSS FIX — NotesApp flaw #10 closed
+
+  Break:  comment on note 1 =  <script>alert('XSS by Eve')</script>
+          opened as alice -> alert RUNS in her browser, and her page carries the raw
+          <script> tag, unescaped. (Chrome 157 dialog "XSS by Eve";
+          cell = <td><script>alert('XSS by Eve')</script></td>)
+
+  Fix:    removed {% autoescape false %} in dashboard.html AND teacher.html
+          -> <td>{{ n.comment }}</td>    (templates are baked into the image: rebuild)
+
+  Closed: same comment now shows as text -> &lt;script&gt;alert(&#39;XSS by
+          Eve&#39;)&lt;/script&gt; ; 0 live <script>alert ; no dialog in the browser
+
+  Real use still works:  "score < 10 on part 1 & 2, see me" displays correctly [x]
+
+  Where:  note 1 is alice's Mathematics grade (user id 6). prof.turing typed it once;
+          it then runs for every reader of that page - the attacker is not present.
+  Spread: the same line sat in teacher.html, so the teacher's own grade table also
+          carried the live tag before the fix.
+  Tests:  106 passed (4 new in tests/test_stored_xss.py).
+  Data:   users/classes/enrollments/notes = 35/4/60/60; all 60 comments are still
+          aesgcm:v1: ciphertext; note 1 still belongs to alice.
+  Commit: 845e4be.

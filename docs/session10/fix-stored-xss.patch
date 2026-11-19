@@ -1,0 +1,30 @@
+diff --git a/web/templates/dashboard.html b/web/templates/dashboard.html
+index 6de1e29..96bfdf3 100644
+--- a/web/templates/dashboard.html
++++ b/web/templates/dashboard.html
+@@ -11,8 +11,9 @@
+         <td>{{ n.id }}</td>
+         <td>{{ n.class_name }}</td>
+         <td>{{ n.grade }}</td>
+-        {# Flaw #10: comment rendered as rich text, autoescaping OFF. #}
+-        <td>{% autoescape false %}{{ n.comment }}{% endautoescape %}</td>
++        {# Fixed (flaw #10): default autoescaping restored. A comment is data, never
++           markup - a stored <script> is displayed as text instead of being executed. #}
++        <td>{{ n.comment }}</td>
+       </tr>
+       {% endfor %}
+     </tbody>
+diff --git a/web/templates/teacher.html b/web/templates/teacher.html
+index fd270cd..3ec9a7c 100644
+--- a/web/templates/teacher.html
++++ b/web/templates/teacher.html
+@@ -46,7 +46,8 @@
+         <td>{{ n.student }}</td>
+         <td>{{ n.class_name }}</td>
+         <td>{{ n.grade }}</td>
+-        <td>{% autoescape false %}{{ n.comment }}{% endautoescape %}</td>
++        {# Fixed (flaw #10): same line as the student dashboard - autoescape stays on. #}
++        <td>{{ n.comment }}</td>
+       </tr>
+       {% endfor %}
+     </tbody>

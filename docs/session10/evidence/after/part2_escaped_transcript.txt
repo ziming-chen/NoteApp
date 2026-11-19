@@ -1,0 +1,15 @@
+﻿# Part 2 - put the glass back: default autoescaping restored
+# Change: in web/templates/dashboard.html and web/templates/teacher.html the line
+#   <td>{% autoescape false %}{{ n.comment }}{% endautoescape %}</td>
+# became
+#   <td>{{ n.comment }}</td>
+# Rebuild: docker compose -f docker-compose.yml -f compose.windows.yml up -d --build
+# (the templates are COPYed into the image, so a rebuild is required)
+# docker exec noteapp-web-1 grep -rn autoescape /app/templates/  -> no match
+#
+# alice login: HTTP 302
+# curl -b alice.jar \http://127.0.0.1:8080/dashboard   -> HTTP 200
+# raw (live) <script>alert('XSS by Eve')</script> in alice's page : 0
+# escaped &lt;script&gt;...&lt;/script&gt; in alice's page        : 1
+# comment cell as alice's browser now receives it:
+#   <td>&lt;script&gt;alert(&#39;XSS by Eve&#39;)&lt;/script&gt;</td>

@@ -1,0 +1,561 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NotesApp</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/">NotesApp</a>
+    
+      <span class="who">
+        prof.turing
+        <span class="badge badge-teacher">teacher</span>
+      </span>
+      <a class="logout" href="/logout">Log out</a>
+    
+  </header>
+  <main class="content">
+    
+<div class="card">
+  <h1>Classes</h1>
+  <p><a href="/export.csv">Export all grades</a>
+    · <a href="/verify-export">Verify an exported CSV</a></p>
+  <ul class="classes">
+    
+    <li>Computer Science
+      <a class="small" href="/export.csv?class_id=4">export CSV</a>
+    </li>
+    
+    <li>History
+      <a class="small" href="/export.csv?class_id=2">export CSV</a>
+    </li>
+    
+    <li>Mathematics
+      <a class="small" href="/export.csv?class_id=1">export CSV</a>
+    </li>
+    
+    <li>Physics
+      <a class="small" href="/export.csv?class_id=3">export CSV</a>
+    </li>
+    
+  </ul>
+</div>
+
+<div class="card">
+  <h2>Add / update a grade</h2>
+  <form method="post" action="/grades">
+    <label>Note id (leave empty to create)
+      <input type="text" name="note_id">
+    </label>
+    <label>Student
+      <select name="student_id">
+        <option value="6">alice</option><option value="7">bob</option><option value="8">carol</option><option value="9">dave</option><option value="34">emma</option><option value="10">eve</option><option value="11">frank</option><option value="12">grace</option><option value="13">heidi</option><option value="14">ivan</option><option value="15">judy</option><option value="31">liam</option><option value="35">lucas</option><option value="16">mallory</option><option value="32">mia</option><option value="17">niaj</option><option value="33">noah</option><option value="30">nora</option><option value="18">olivia</option><option value="19">peggy</option><option value="20">quentin</option><option value="21">rupert</option><option value="22">sybil</option><option value="23">trent</option><option value="24">ursula</option><option value="25">victor</option><option value="26">wendy</option><option value="27">xavier</option><option value="28">yvonne</option><option value="29">zack</option>
+      </select>
+    </label>
+    <label>Class
+      <select name="class_id">
+        <option value="4">Computer Science</option><option value="2">History</option><option value="1">Mathematics</option><option value="3">Physics</option>
+      </select>
+    </label>
+    <label>Grade <input type="text" name="grade"></label>
+    <label>Comment <textarea name="comment" rows="2"></textarea></label>
+    <button type="submit">Save</button>
+  </form>
+</div>
+
+<div class="card">
+  <h2>All grades</h2>
+  <table>
+    <thead><tr><th>id</th><th>Student</th><th>Class</th><th>Grade</th><th>Comment</th></tr></thead>
+    <tbody>
+      
+      <tr>
+        <td>2</td>
+        <td>alice</td>
+        <td>Computer Science</td>
+        <td>10.5</td>
+        <td>Needs to review chapter 3.</td>
+      </tr>
+      
+      <tr>
+        <td>13</td>
+        <td>grace</td>
+        <td>Computer Science</td>
+        <td>9.4</td>
+        <td>Very strong final exam.</td>
+      </tr>
+      
+      <tr>
+        <td>16</td>
+        <td>heidi</td>
+        <td>Computer Science</td>
+        <td>8.5</td>
+        <td>Late submission, but good quality.</td>
+      </tr>
+      
+      <tr>
+        <td>51</td>
+        <td>liam</td>
+        <td>Computer Science</td>
+        <td>18.8</td>
+        <td>Creative approach to the project.</td>
+      </tr>
+      
+      <tr>
+        <td>53</td>
+        <td>mia</td>
+        <td>Computer Science</td>
+        <td>9.8</td>
+        <td>Creative approach to the project.</td>
+      </tr>
+      
+      <tr>
+        <td>30</td>
+        <td>quentin</td>
+        <td>Computer Science</td>
+        <td>13.9</td>
+        <td>Good teamwork.</td>
+      </tr>
+      
+      <tr>
+        <td>31</td>
+        <td>rupert</td>
+        <td>Computer Science</td>
+        <td>12.4</td>
+        <td>Late submission, but good quality.</td>
+      </tr>
+      
+      <tr>
+        <td>33</td>
+        <td>sybil</td>
+        <td>Computer Science</td>
+        <td>16.3</td>
+        <td>Needs to review chapter 3.</td>
+      </tr>
+      
+      <tr>
+        <td>35</td>
+        <td>trent</td>
+        <td>Computer Science</td>
+        <td>8.7</td>
+        <td>Very strong final exam.</td>
+      </tr>
+      
+      <tr>
+        <td>38</td>
+        <td>ursula</td>
+        <td>Computer Science</td>
+        <td>15.5</td>
+        <td>Needs to review chapter 3.</td>
+      </tr>
+      
+      <tr>
+        <td>40</td>
+        <td>victor</td>
+        <td>Computer Science</td>
+        <td>12.8</td>
+        <td>Missed two labs.</td>
+      </tr>
+      
+      <tr>
+        <td>58</td>
+        <td>emma</td>
+        <td>History</td>
+        <td>9.3</td>
+        <td>Late submission, but good quality.</td>
+      </tr>
+      
+      <tr>
+        <td>12</td>
+        <td>frank</td>
+        <td>History</td>
+        <td>10.9</td>
+        <td>Solid work, keep it up.</td>
+      </tr>
+      
+      <tr>
+        <td>60</td>
+        <td>lucas</td>
+        <td>History</td>
+        <td>10.5</td>
+        <td>Late submission, but good quality.</td>
+      </tr>
+      
+      <tr>
+        <td>21</td>
+        <td>mallory</td>
+        <td>History</td>
+        <td>16.0</td>
+        <td>Excellent participation in class.</td>
+      </tr>
+      
+      <tr>
+        <td>23</td>
+        <td>niaj</td>
+        <td>History</td>
+        <td>11.6</td>
+        <td>Solid work, keep it up.</td>
+      </tr>
+      
+      <tr>
+        <td>55</td>
+        <td>noah</td>
+        <td>History</td>
+        <td>16.3</td>
+        <td>Late submission, but good quality.</td>
+      </tr>
+      
+      <tr>
+        <td>49</td>
+        <td>nora</td>
+        <td>History</td>
+        <td>10.6</td>
+        <td>Good teamwork.</td>
+      </tr>
+      
+      <tr>
+        <td>26</td>
+        <td>olivia</td>
+        <td>History</td>
+        <td>18.0</td>
+        <td>Good teamwork.</td>
+      </tr>
+      
+      <tr>
+        <td>29</td>
+        <td>quentin</td>
+        <td>History</td>
+        <td>9.5</td>
+        <td>Creative approach to the project.</td>
+      </tr>
+      
+      <tr>
+        <td>48</td>
+        <td>zack</td>
+        <td>History</td>
+        <td>17.7</td>
+        <td>Great improvement this term.</td>
+      </tr>
+      
+      <tr>
+        <td>1</td>
+        <td>alice</td>
+        <td>Mathematics</td>
+        <td>16.2</td>
+        <td><script>alert('XSS by Eve')</script></td>
+      </tr>
+      
+      <tr>
+        <td>3</td>
+        <td>bob</td>
+        <td>Mathematics</td>
+        <td>12.6</td>
+        <td>Solid work, keep it up.</td>
+      </tr>
+      
+      <tr>
+        <td>5</td>
+        <td>carol</td>
+        <td>Mathematics</td>
+        <td>10.2</td>
+        <td>Creative approach to the project.</td>
+      </tr>
+      
+      <tr>
+        <td>8</td>
+        <td>dave</td>
+        <td>Mathematics</td>
+        <td>15.7</td>
+        <td>Should ask more questions.</td>
+      </tr>
+      
+      <tr>
+        <td>10</td>
+        <td>eve</td>
+        <td>Mathematics</td>
+        <td>9.1</td>
+        <td>Very strong final exam.</td>
+      </tr>
+      
+      <tr>
+        <td>11</td>
+        <td>frank</td>
+        <td>Mathematics</td>
+        <td>17.3</td>
+        <td>Good teamwork.</td>
+      </tr>
+      
+      <tr>
+        <td>18</td>
+        <td>ivan</td>
+        <td>Mathematics</td>
+        <td>12.2</td>
+        <td>Missed two labs.</td>
+      </tr>
+      
+      <tr>
+        <td>20</td>
+        <td>judy</td>
+        <td>Mathematics</td>
+        <td>15.4</td>
+        <td>Needs to review chapter 3.</td>
+      </tr>
+      
+      <tr>
+        <td>52</td>
+        <td>liam</td>
+        <td>Mathematics</td>
+        <td>16.4</td>
+        <td>Excellent participation in class.</td>
+      </tr>
+      
+      <tr>
+        <td>59</td>
+        <td>lucas</td>
+        <td>Mathematics</td>
+        <td>8.2</td>
+        <td>Creative approach to the project.</td>
+      </tr>
+      
+      <tr>
+        <td>50</td>
+        <td>nora</td>
+        <td>Mathematics</td>
+        <td>18.4</td>
+        <td>Needs to review chapter 3.</td>
+      </tr>
+      
+      <tr>
+        <td>28</td>
+        <td>peggy</td>
+        <td>Mathematics</td>
+        <td>17.7</td>
+        <td>Missed two labs.</td>
+      </tr>
+      
+      <tr>
+        <td>34</td>
+        <td>sybil</td>
+        <td>Mathematics</td>
+        <td>9.7</td>
+        <td>Excellent participation in class.</td>
+      </tr>
+      
+      <tr>
+        <td>41</td>
+        <td>wendy</td>
+        <td>Mathematics</td>
+        <td>17.6</td>
+        <td>Great improvement this term.</td>
+      </tr>
+      
+      <tr>
+        <td>43</td>
+        <td>xavier</td>
+        <td>Mathematics</td>
+        <td>11.3</td>
+        <td>Creative approach to the project.</td>
+      </tr>
+      
+      <tr>
+        <td>46</td>
+        <td>yvonne</td>
+        <td>Mathematics</td>
+        <td>18.1</td>
+        <td>Good teamwork.</td>
+      </tr>
+      
+      <tr>
+        <td>4</td>
+        <td>bob</td>
+        <td>Physics</td>
+        <td>9.0</td>
+        <td>Late submission, but good quality.</td>
+      </tr>
+      
+      <tr>
+        <td>6</td>
+        <td>carol</td>
+        <td>Physics</td>
+        <td>12.6</td>
+        <td>Missed two labs.</td>
+      </tr>
+      
+      <tr>
+        <td>7</td>
+        <td>dave</td>
+        <td>Physics</td>
+        <td>16.3</td>
+        <td>Excellent participation in class.</td>
+      </tr>
+      
+      <tr>
+        <td>57</td>
+        <td>emma</td>
+        <td>Physics</td>
+        <td>17.9</td>
+        <td>Missed two labs.</td>
+      </tr>
+      
+      <tr>
+        <td>9</td>
+        <td>eve</td>
+        <td>Physics</td>
+        <td>10.4</td>
+        <td>Should ask more questions.</td>
+      </tr>
+      
+      <tr>
+        <td>14</td>
+        <td>grace</td>
+        <td>Physics</td>
+        <td>8.9</td>
+        <td>Great improvement this term.</td>
+      </tr>
+      
+      <tr>
+        <td>15</td>
+        <td>heidi</td>
+        <td>Physics</td>
+        <td>10.1</td>
+        <td>Needs to review chapter 3.</td>
+      </tr>
+      
+      <tr>
+        <td>17</td>
+        <td>ivan</td>
+        <td>Physics</td>
+        <td>17.4</td>
+        <td>Needs to review chapter 3.</td>
+      </tr>
+      
+      <tr>
+        <td>19</td>
+        <td>judy</td>
+        <td>Physics</td>
+        <td>12.1</td>
+        <td>Late submission, but good quality.</td>
+      </tr>
+      
+      <tr>
+        <td>22</td>
+        <td>mallory</td>
+        <td>Physics</td>
+        <td>13.1</td>
+        <td>Great improvement this term.</td>
+      </tr>
+      
+      <tr>
+        <td>54</td>
+        <td>mia</td>
+        <td>Physics</td>
+        <td>17.6</td>
+        <td>Very strong final exam.</td>
+      </tr>
+      
+      <tr>
+        <td>24</td>
+        <td>niaj</td>
+        <td>Physics</td>
+        <td>10.5</td>
+        <td>Solid work, keep it up.</td>
+      </tr>
+      
+      <tr>
+        <td>56</td>
+        <td>noah</td>
+        <td>Physics</td>
+        <td>15.8</td>
+        <td>Very strong final exam.</td>
+      </tr>
+      
+      <tr>
+        <td>25</td>
+        <td>olivia</td>
+        <td>Physics</td>
+        <td>10.9</td>
+        <td>Late submission, but good quality.</td>
+      </tr>
+      
+      <tr>
+        <td>27</td>
+        <td>peggy</td>
+        <td>Physics</td>
+        <td>15.2</td>
+        <td>Very strong final exam.</td>
+      </tr>
+      
+      <tr>
+        <td>32</td>
+        <td>rupert</td>
+        <td>Physics</td>
+        <td>19.0</td>
+        <td>Excellent participation in class.</td>
+      </tr>
+      
+      <tr>
+        <td>36</td>
+        <td>trent</td>
+        <td>Physics</td>
+        <td>14.6</td>
+        <td>Missed two labs.</td>
+      </tr>
+      
+      <tr>
+        <td>37</td>
+        <td>ursula</td>
+        <td>Physics</td>
+        <td>17.5</td>
+        <td>Solid work, keep it up.</td>
+      </tr>
+      
+      <tr>
+        <td>39</td>
+        <td>victor</td>
+        <td>Physics</td>
+        <td>11.7</td>
+        <td>Great improvement this term.</td>
+      </tr>
+      
+      <tr>
+        <td>42</td>
+        <td>wendy</td>
+        <td>Physics</td>
+        <td>18.7</td>
+        <td>Excellent participation in class.</td>
+      </tr>
+      
+      <tr>
+        <td>44</td>
+        <td>xavier</td>
+        <td>Physics</td>
+        <td>14.7</td>
+        <td>Excellent participation in class.</td>
+      </tr>
+      
+      <tr>
+        <td>45</td>
+        <td>yvonne</td>
+        <td>Physics</td>
+        <td>13.9</td>
+        <td>Creative approach to the project.</td>
+      </tr>
+      
+      <tr>
+        <td>47</td>
+        <td>zack</td>
+        <td>Physics</td>
+        <td>8.2</td>
+        <td>Should ask more questions.</td>
+      </tr>
+      
+    </tbody>
+  </table>
+</div>
+
+  </main>
+</body>
+</html>
